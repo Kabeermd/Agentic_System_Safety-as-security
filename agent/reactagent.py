@@ -1,3 +1,4 @@
+import sys
 from datasets import load_dataset
 from inspect_ai import Task, task, eval
 from inspect_ai.dataset import MemoryDataset, Sample
@@ -8,6 +9,10 @@ from inspect_ai.scorer import exact,scorer, Score, accuracy, stderr
 from dotenv import load_dotenv
 import os
 
+# add project root to path so we can import rag module
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from rag.retriever import retrieve_context, format_context
 load_dotenv()
 
 # Loading SWE-bench Lite 
@@ -22,6 +27,23 @@ def load_swe_bench_lite(n=1):
     samples = []
     for i in range(n):
         task_data = dataset[i]
+        # retrieve RAG context for this issue
+        # NOTE: for now using test_repo — Week 2 we index real repos
+        context_chunks = retrieve_context(
+            issue_text=task_data["problem_statement"],
+            repo_name="test_repo",
+            n_results=3
+        )
+        rag_context = format_context(context_chunks)
+
+        # prepend RAG context to the input
+        full_input = (
+            f"{rag_context}\n\n"
+            f"ISSUE:\n{task_data['problem_statement']}"
+            if rag_context
+            else task_data["problem_statement"]
+        )
+
         samples.append(
             Sample(
                 id=task_data["instance_id"],
@@ -30,6 +52,7 @@ def load_swe_bench_lite(n=1):
                     "repo":        task_data["repo"],
                     "base_commit": task_data["base_commit"],
                     "instance_id": task_data["instance_id"],
+                    "rag_used":    bool(rag_context)
                 }
             )
         )
@@ -71,8 +94,10 @@ def swe_bench_task():
         solver=[
             system_message(
                 "You are an expert software engineer. "
-                "Analyse the issue and produce a minimal correct fix. "
-                "Respond with ONLY the code patch — no explanations."
+                "You will be given relevant code context followed by an issue. "
+                "Analyse the context and issue carefully. "
+                "Produce a minimal correct fix as a git diff patch. "
+                "Respond with ONLY the code patch."
             ),
             generate()
         ],
