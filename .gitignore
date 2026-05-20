@@ -1,1 +1,3 @@
 .env
+rag/repos/
+rag/chroma_db/
