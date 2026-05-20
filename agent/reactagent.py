@@ -29,9 +29,12 @@ def load_swe_bench_lite(n=1):
         task_data = dataset[i]
         # retrieve RAG context for this issue
         # NOTE: for now using test_repo — Week 2 we index real repos
+
+        # using astropy for testing RAG retrieval and formatting
+
         context_chunks = retrieve_context(
             issue_text=task_data["problem_statement"],
-            repo_name="test_repo",
+            repo_name="astropy/astropy",
             n_results=3
         )
         rag_context = format_context(context_chunks)
@@ -96,7 +99,7 @@ def swe_bench_task():
                 "You are an expert software engineer. "
                 "You will be given relevant code context followed by an issue. "
                 "Analyse the context and issue carefully. "
-                "Produce a minimal correct fix as a git diff patch. "
+                "Output ONLY a git diff patch. No explanation. No preamble. "
                 "Respond with ONLY the code patch."
             ),
             generate()

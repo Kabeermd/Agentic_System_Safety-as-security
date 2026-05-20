@@ -15,9 +15,10 @@ PCER judge:           Llama 3.3 70B (Groq) — complex evaluation task
 
 
 ## Week 1 Day 2
- Qwen2.5-Coder 7B via Ollama — working, supports tools
-- ReAct agent running inside Inspect on SWE-bench Lite
-- Agent reasoning correctly about astropy bugs
-- Traces logging to ./results/
-- Issue: submit() answer truncated — fix with --max-tokens 4096
-- Tomorrow: add max_tokens, run 3 tasks cleanly, check trace logs
+ monitoring/read_trace.py     — reads .eval log files
+ monitoring/annotator.py      — risk-annotates every trace step
+ monitoring/traces/           — stores annotated JSON files
+ rag/indexer.py               — chunks and indexes Python files into ChromaDB
+ rag/retriever.py             — semantic search over indexed code
+ rag/chroma_db/               — local persistent vector store
+ RAG connected to agent       — context retrieved before every task

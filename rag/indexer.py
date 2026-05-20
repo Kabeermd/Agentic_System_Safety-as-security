@@ -97,9 +97,21 @@ def index_repo(repo_path: str, repo_name: str, db_path="./rag/chroma_db"):
 
 
 if __name__ == "__main__":
+
+
     # Test with a small local Python folder first
-    # We will use actual SWE-bench repos in Week 2
-    print("Indexer starting...")
-    test_path = "./agent"
-    index_repo(test_path, "test_repo")
-    print("\nIndexer working correctly")
+    # We will use actual SWE-bench repos in the future
+    
+    #  
+    # Trying Indexing for astrophy repo
+
+    print("Indexer astrophy repo starting...")
+
+    #test_path = "./agent"
+    #index_repo(test_path, "test_repo")
+
+    index_repo(
+        repo_path="./rag/repos/astropy",
+        repo_name="astropy/astropy",
+    )
+    print("\n Astropy Indexed correctly")
