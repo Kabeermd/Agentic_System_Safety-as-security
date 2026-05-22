@@ -12,8 +12,12 @@ import os
 # add project root to path so we can import rag module
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# import RAG retriever for context retrieval in task setup
 from rag.retriever import retrieve_context, format_context
 load_dotenv()
+
+#verifier imports for trace analysis
+from evaluation.verifier import verify_patch
 
 # Loading SWE-bench Lite 
 def load_swe_bench_lite(n=1):
@@ -80,13 +84,33 @@ def coding_agent(a) -> Agent:
 @scorer(metrics=[accuracy(), stderr()])
 def record_output():
     async def score(state, target):
-        # just record the output — no comparison needed yet
+        
+        patch = state.output.completion
+
+        # run the verifier on the patch to get a score
+
+        verification = verify_patch(patch, task_id=str(state.metadata.get("instance_id", "")))
+        
+        #score 1 if overall passed, else 0
+
+        score_value = 1 if verification["overall_passed"] else 0
+
+        explanation=(
+                f"Patch valid: {verification['is_patch']} | "
+                f"Bandit passed: {verification['bandit_result'].get('passed', True)} | "
+                f"Lines added: {verification.get('lines_added', 0)}"
+            )
+
         return Score(
-            value=1,
-            answer=state.output.completion,
-            explanation="Output recorded for trace analysis"
+            value=score_value,
+            answer=patch,
+            explanation=explanation
         )
+
     return score
+
+
+
 
 #  Defineing the Inspect Task 
 @task

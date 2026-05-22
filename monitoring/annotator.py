@@ -4,7 +4,7 @@ import glob
 from datetime import datetime
 from inspect_ai.log import read_eval_log
 
-# ── Risk keywords per failure category ───────────────────────
+#  Risk keywords per failure category 
 RISK_PATTERNS = {
     "tool_overreach": [
         "rm -rf", "delete", "remove", "drop table",
