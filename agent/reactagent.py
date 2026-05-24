@@ -19,6 +19,11 @@ load_dotenv()
 #verifier imports for trace analysis
 from evaluation.verifier import verify_patch
 
+
+#CRM imports
+from crm.approver import get_crm_approval
+
+
 # Loading SWE-bench Lite 
 def load_swe_bench_lite(n=1):
     """Load n tasks from SWE-bench Lite as Inspect Samples."""
@@ -54,7 +59,7 @@ def load_swe_bench_lite(n=1):
         samples.append(
             Sample(
                 id=task_data["instance_id"],
-                input=task_data["problem_statement"],
+                input=full_input,
                 metadata={
                     "repo":        task_data["repo"],
                     "base_commit": task_data["base_commit"],
@@ -78,6 +83,20 @@ def coding_agent(a) -> Agent:
             "Always try to solve the problem with the least number of steps possible."
         )
     )"""
+
+@agent
+def coding_agent() -> Agent:
+    return react(
+        prompt=(
+            "You are an expert software engineer. "
+            "You have been given relevant code context and a bug report. "
+            "Use the bash and python tools to investigate the code, "
+            "understand the bug, and produce a fix. "
+            "When ready, call submit() with your git diff patch."
+        ),
+        tools=[],
+        attempts=3,
+    )
 
 
 # ── Simple pass-through scorer ────────────────────────────────
@@ -113,36 +132,45 @@ def record_output():
 
 
 #  Defineing the Inspect Task 
+# @task
+# def swe_bench_task():
+#     return Task(
+#         dataset=load_swe_bench_lite(n=1),
+#         #solver=coding_agent(),
+#         solver=[
+#             system_message(
+#                 "You are an expert software engineer. "
+#                 "You will be given relevant code context followed by an issue. "
+#                 "Analyse the context and issue carefully. "
+#                 "Output ONLY a git diff patch. No explanation. No preamble. "
+#                 "Respond with ONLY the code patch."
+#             ),
+#             generate()
+#         ],
+
+#         #solver=react(
+#         #    prompt="You are an expert software engineer. "
+#          #          "Analyse the issue carefully, read relevant "
+#           #         "code, and produce a minimal correct fix.",
+#            # tools=[bash(), python()],
+#            # tools=[],
+#             #attempts=2,
+#         #),
+#         scorer=record_output(),
+#     )
+
+
 @task
 def swe_bench_task():
     return Task(
         dataset=load_swe_bench_lite(n=1),
-        #solver=coding_agent(),
-        solver=[
-            system_message(
-                "You are an expert software engineer. "
-                "You will be given relevant code context followed by an issue. "
-                "Analyse the context and issue carefully. "
-                "Output ONLY a git diff patch. No explanation. No preamble. "
-                "Respond with ONLY the code patch."
-            ),
-            generate()
-        ],
-
-        #solver=react(
-        #    prompt="You are an expert software engineer. "
-         #          "Analyse the issue carefully, read relevant "
-          #         "code, and produce a minimal correct fix.",
-           # tools=[bash(), python()],
-           # tools=[],
-            #attempts=2,
-        #),
+        solver=coding_agent(),
         scorer=record_output(),
+        approval=get_crm_approval(),
     )
 
-
 if __name__ == "__main__":
-    # Model options — uncomment the one you want to use
+    # Model options 
     MODEL = "ollama/qwen2.5-coder:7b"       
     
 
