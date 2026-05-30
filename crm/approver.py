@@ -26,6 +26,8 @@ def crm_approver(
         view: ToolCallView,
         history: list[ChatMessage],
     ) -> Approval:
+        
+        print(f"\n[CRM] Evaluating tool call: {call.function} with args {call.arguments}")
 
         # get task context from last user message in history
         context = ""

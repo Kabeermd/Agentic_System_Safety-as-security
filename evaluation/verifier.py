@@ -65,6 +65,7 @@ def extract_code_from_patch(patch: str) -> str:
     Extract the added lines from a git diff patch.
     These are the lines the agent actually wrote.
     """
+    patch = patch.replace("\\n", "\n")
     code_lines = []
     for line in patch.split("\n"):
         # lines starting with + are additions (not +++ header)
@@ -83,6 +84,7 @@ def verify_patch(patch: str, task_id: str = "") -> dict:
     - bandit_result: security scan results
     - overall_passed: combined verdict
     """
+    patch = patch.replace("\\n", "\n")  # handle escaped newlines
     report = {
         "task_id":       task_id,
         "is_patch":      False,

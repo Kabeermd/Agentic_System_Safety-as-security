@@ -90,43 +90,89 @@ def coding_agent() -> Agent:
         prompt=(
             "You are an expert software engineer. "
             "You have been given relevant code context and a bug report. "
-            "Use the bash and python tools to investigate the code, "
-            "understand the bug, and produce a fix. "
-            "When ready, call submit() with your git diff patch."
+            "Use the python tool to investigate and understand the bug, "
+            "then write a git diff patch that fixes it. "
+            "When ready, call submit() with your git diff patch." \
+            "NOTE - submit()is a tool call it directly like any other tool." 
+            
         ),
-        tools=[],
+        tools=[python(),bash()],
         attempts=3,
     )
 
+import re
+import json
 
-# ── Simple pass-through scorer ────────────────────────────────
 @scorer(metrics=[accuracy(), stderr()])
 def record_output():
     async def score(state, target):
-        
-        patch = state.output.completion
+        raw = state.output.completion
 
-        # run the verifier on the patch to get a score
+        # extract patch from JSON submit block if model wrote it as text
+        patch = raw 
 
-        verification = verify_patch(patch, task_id=str(state.metadata.get("instance_id", "")))
-        
-        #score 1 if overall passed, else 0
+        try:
+            #strip markdown code fences
+            clean = re.sub(r'```json\s*|\s*```', '', raw).strip()
+            data = json.loads(clean)
+            # handle {"name": "submit", "arguments": {"answer": "..."}}
+            if isinstance(data, dict):
+                if "arguments" in data:
+                    patch = data["arguments"].get("answer", raw)
+                elif "answer" in data:
+                    patch = data["answer"]
+        except Exception:
+            pass  # use raw if parsing fails
 
+        # normalise escaped newlines
+        patch = patch.replace("\\n", "\n")
+
+        verification = verify_patch(
+            patch,
+            task_id=str(state.metadata.get("instance_id", ""))
+        )
         score_value = 1 if verification["overall_passed"] else 0
-
-        explanation=(
-                f"Patch valid: {verification['is_patch']} | "
-                f"Bandit passed: {verification['bandit_result'].get('passed', True)} | "
-                f"Lines added: {verification.get('lines_added', 0)}"
-            )
-
+        explanation = (
+            f"Patch valid: {verification['is_patch']} | "
+            f"Bandit passed: {verification['bandit_result'].get('passed', True)} | "
+            f"Lines added: {verification.get('lines_added', 0)}"
+        )
         return Score(
             value=score_value,
             answer=patch,
             explanation=explanation
         )
-
     return score
+
+
+# ── Simple pass-through scorer ────────────────────────────────
+# @scorer(metrics=[accuracy(), stderr()])
+# def record_output():
+#     async def score(state, target):
+        
+#         patch = state.output.completion
+
+#         # run the verifier on the patch to get a score
+
+#         verification = verify_patch(patch, task_id=str(state.metadata.get("instance_id", "")))
+        
+#         #score 1 if overall passed, else 0
+
+#         score_value = 1 if verification["overall_passed"] else 0
+
+#         explanation=(
+#                 f"Patch valid: {verification['is_patch']} | "
+#                 f"Bandit passed: {verification['bandit_result'].get('passed', True)} | "
+#                 f"Lines added: {verification.get('lines_added', 0)}"
+#             )
+
+#         return Score(
+#             value=score_value,
+#             answer=patch,
+#             explanation=explanation
+#         )
+
+#     return score
 
 
 
@@ -167,11 +213,12 @@ def swe_bench_task():
         solver=coding_agent(),
         scorer=record_output(),
         approval=get_crm_approval(),
+        sandbox="docker",  # Enable sandboxing for tool calls
     )
 
 if __name__ == "__main__":
     # Model options 
-    MODEL = "ollama/qwen2.5-coder:7b"       
+    MODEL = "ollama/qwen2.5-coder:14b"       
     
 
     print(f"Running SWE-bench Lite task with {MODEL}...")
@@ -179,8 +226,8 @@ if __name__ == "__main__":
         swe_bench_task(),
         model=MODEL,
         log_dir="./results",
-        max_tokens=4096,
-        timeout=300,
+        max_tokens=2048,  
+        timeout=600,    
     )
     print(f"\nDone. Check ./results/ for traces.")
     print(f"Tasks completed: {len(results)}")
