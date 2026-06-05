@@ -1,3 +1,10 @@
 .env
 rag/repos/
 rag/chroma_db/
+results/
+.venv/
+__pycache__/
+*.eval
+*.bin
+*.sqlite3
+*.pickle
