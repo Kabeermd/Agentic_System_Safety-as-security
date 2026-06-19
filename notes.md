@@ -63,3 +63,29 @@ Openrouter is an option
 - Confirm CRM fires on real tool calls during eval
 - Add AMBER human escalation chain
 - Set up Docker sandbox for bash/python tools
+
+
+## Week 2 Complete
+
+### What was built
+- Docker sandbox via compose.yaml — python:3.11-slim container
+- CRM Approver wired into Inspect Task approval chain
+- CRM initialising correctly — [CRM] Approval policy initialised confirmed
+- Scorer fix — extracts patch from JSON text block
+- Score 1 confirmed on astropy__astropy-12907
+
+### Current model setup
+- Agent: Qwen2.5-Coder 14B (Ollama local)
+- CRM overseer: Llama 3.3 70B (Groq)
+- Sandbox: Docker python:3.11-slim
+
+### Known limitations
+- CRM not yet intercepting real tool calls (submit is text not tool)
+- the issue will local model instead of tool calling it writing as a   JSON causing CRM decison to not change will fix this API key for development using with ollama due to token constraints 
+- 14B slow locally — 25 min per task
+- CRM decision log still only has manual test entries
+
+### Next — Week 3
+- Build PCER 5-dimension rubric
+- Implement LLM judge scorer
+- Human validation study (Cohen's Kappa)

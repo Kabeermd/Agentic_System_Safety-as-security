@@ -92,8 +92,9 @@ def coding_agent() -> Agent:
             "You have been given relevant code context and a bug report. "
             "Use the python tool to investigate and understand the bug, "
             "then write a git diff patch that fixes it. "
-            "When ready, call submit() with your git diff patch." \
-            "NOTE - submit()is a tool call it directly like any other tool." 
+            "When ready, call submit() with your git diff patch." 
+            "NOTE - submit() is a tool call it directly like any other tool."
+            "Do not write JSON manually. Call submit() as a function" 
             
         ),
         tools=[python(),bash()],
@@ -218,7 +219,7 @@ def swe_bench_task():
 
 if __name__ == "__main__":
     # Model options 
-    MODEL = "ollama/qwen2.5-coder:14b"       
+    MODEL = "ollama/qwen2.5-coder:7b"       
     
 
     print(f"Running SWE-bench Lite task with {MODEL}...")

@@ -1,7 +1,8 @@
 services:
   default:
     image: python:3.11-slim
-    command: tail -f /dev/null
+    command: >
+      bash -c "pip install astropy numpy pytest -q && tail -f /dev/null"
     working_dir: /workspace
     volumes:
       - ./rag/repos/astropy:/workspace/astropy
