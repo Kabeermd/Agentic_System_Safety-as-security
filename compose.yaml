@@ -2,9 +2,21 @@ services:
   default:
     image: python:3.11-slim
     command: >
-      bash -c "pip install astropy numpy pytest -q && tail -f /dev/null"
-    working_dir: /workspace
+      bash -c "
+      apt-get update &&
+      apt-get install -y --no-install-recommends build-essential git &&
+      pip install --no-cache-dir hypothesis pytest pytest-astropy pytest-doctestplus &&
+      pip install --no-cache-dir -e /workspace/astropy &&
+      tail -f /dev/null
+      "
+    working_dir: /workspace/astropy
     volumes:
       - ./rag/repos/astropy:/workspace/astropy
     environment:
-      - PYTHONPATH=/workspace
+      - PYTHONPATH=/workspace/astropy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import astropy; print(astropy.__file__)"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 180s

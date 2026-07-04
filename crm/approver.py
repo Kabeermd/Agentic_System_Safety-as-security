@@ -50,13 +50,13 @@ def crm_approver(
         print(f"[CRM] Decision: {decision} — {reason}")
 
         if decision == ALLOW:
-            return Approval(decison="approve", Explanation=reason)
+            return Approval(decision="approve", explanation=reason)
         elif decision == BLOCK:
-            return Approval(decison="reject", Explanation=reason)
+            return Approval(decision="reject", explanation=reason)
         else:
             # AMBER — escalate to human
             print(f"[CRM]  AMBER — Human review required")
-            return Approval(decison="escalate", Explanation=reason)
+            return Approval(decision="escalate", explanation=reason)
         
     return approve
 
