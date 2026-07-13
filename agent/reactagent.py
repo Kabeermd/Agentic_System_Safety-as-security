@@ -1,9 +1,11 @@
 import sys
 from datasets import load_dataset
+from datetime import datetime
 from inspect_ai import Task, task, eval
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.solver import generate, system_message
 from inspect_ai.agent import Agent, agent, react
+from inspect_ai.tool import tool
 from inspect_ai.tool import bash, python
 from inspect_ai.scorer import exact,scorer, Score, accuracy, stderr
 from dotenv import load_dotenv
@@ -70,6 +72,56 @@ from crm.approver import get_crm_approval
         )
     return MemoryDataset(samples=samples, name="swe-bench-lite")"""
 
+
+GENERIC_PREPATCH = (
+    "if [ -f pyproject.toml ]; then "
+    "sed -i -E 's/^license = \"([^\"]*)\"$/license = {text = \"\\1\"}/' pyproject.toml 2>/dev/null; "
+    "sed -i '/^license-files/d' pyproject.toml 2>/dev/null; "
+    "fi"
+)
+
+
+
+def generic_install(extra_pip_packages: str = "", pre_steps: str = "", pip_flags: str = "-e .") -> str:
+    return (
+        "if [ -f .build_complete ]; then echo 'Already built, skipping'; "
+        "else "
+        f"{GENERIC_PREPATCH} && "
+        "rm -rf build *.egg-info && "
+        f"{pre_steps} "
+        f"pip install --no-build-isolation {pip_flags} {extra_pip_packages} "
+        "&& touch .build_complete; "
+        "fi"
+    )
+
+REPO_INSTALL_COMMANDS = {
+    "astropy/astropy": generic_install(
+        pre_steps="pip install extension_helpers && ",
+        extra_pip_packages="pytest-astropy pytest-doctestplus",
+    ),
+    "django/django": generic_install(
+        pip_flags="-e .",
+        extra_pip_packages="&& pip install -r tests/requirements/py3.txt",
+    ),
+    "sympy/sympy": generic_install(pip_flags="-e .[dev]"),
+    "matplotlib/matplotlib": generic_install(
+        pre_steps="apt-get update && apt-get install -y libfreetype6-dev libpng-dev && ",
+        pip_flags="-e .[dev]",
+    ),
+}
+
+# Fallback for any repo not explicitly listed yet — genuinely generic default
+DEFAULT_INSTALL = generic_install()
+
+def build_setup_script(repo_dir_name: str, install_cmd: str) -> str:
+    log_path = f"/workspace/{repo_dir_name}/setup_log.txt"
+    return (
+        f"cd /workspace/{repo_dir_name} && "
+        f"( {install_cmd} ) > {log_path} 2>&1 "
+        f"|| (echo '--- SETUP FAILED, LOG: ---'; cat {log_path}; exit 1)"
+    )
+
+
 def load_swe_bench_lite(n=1):
     dataset = load_dataset(
         "princeton-nlp/SWE-bench_Lite",
@@ -80,9 +132,13 @@ def load_swe_bench_lite(n=1):
     samples = []
     for i in range(n):
         task_data = dataset[i]
+        repo = task_data["repo"]                        # e.g 'astropy/astropy'
+        repo_dir_name = repo.split("/")[-1]              # "astropy"
+        install_cmd = REPO_INSTALL_COMMANDS.get(repo, DEFAULT_INSTALL)
+
         context_chunks = retrieve_context(
             issue_text=task_data["problem_statement"],
-            repo_name="astropy/astropy",
+            repo_name=repo,          # <-- also made dynamic, was hardcoded to astropy/astropy
             n_results=3
         )
         rag_context = format_context(context_chunks)
@@ -103,7 +159,8 @@ def load_swe_bench_lite(n=1):
                     "fail_to_pass":  json.loads(task_data["FAIL_TO_PASS"]),
                     "pass_to_pass":  json.loads(task_data["PASS_TO_PASS"]),
                     "test_patch":    task_data["test_patch"],
-                }
+                },
+                setup=build_setup_script(repo_dir_name, install_cmd),
             )
         )
     return MemoryDataset(samples=samples, name="swe-bench-lite")
@@ -121,20 +178,43 @@ def coding_agent(a) -> Agent:
         )
     )"""
 
+
+
+@tool
+def read():
+    async def execute(path: str) -> str:
+        """Read the full contents of a file at the given path.
+
+        Args:
+            path: Absolute path to the file to read, inside the sandbox.
+        """
+        try:
+            content = await sandbox().read_file(path)
+            return content
+        except Exception as e:
+            return f"Error reading {path}: {e}"
+    return execute
+
+
 @agent
 def coding_agent() -> Agent:
     return react(
         prompt=(
             "You are an expert software engineer. "
             "You have been given relevant code context and a bug report. "
-            "Use the python tool to investigate and understand the bug, "
-            "then write a git diff patch that fixes it. "
-            "When ready, call submit() with your git diff patch." 
-            "NOTE - submit() is a tool call it directly like any other tool."
-            "Do not write JSON manually. Call submit() as a function" 
-            
+            "FIRST, carefully read the RELEVANT CODE CONTEXT provided above the issue — "
+            "it likely already contains the file(s) you need. Only use bash/python tools "
+            "to explore further if that context is genuinely insufficient to understand "
+            "or fix the bug. Do not re-read files that are already shown in the context, "
+            "and do not repeat a search or file read you have already performed. "
+            "Work efficiently: use the minimum number of tool calls needed to understand "
+            "and fix the bug. If you find yourself repeating similar searches without new "
+            "information, stop and commit to a decision using what you already know. "
+            "Once you understand the bug, write a git diff patch that fixes it. "
+            "When ready, call submit() with your git diff patch directly as a tool call — "
+            "do not write JSON manually."
         ),
-        tools=[python(),bash()],
+        tools=[python(),bash(),read()],
         attempts=3,
     )
 
@@ -164,7 +244,8 @@ def swe_bench_scorer():
         test_patch   = meta["test_patch"]
         fail_to_pass = meta["fail_to_pass"]
         pass_to_pass = meta["pass_to_pass"]
-        repo_dir     = "/workspace/astropy"
+        repo_dir_name = meta["repo"].split("/")[-1]
+        repo_dir     = f"/workspace/{repo_dir_name}"
 
         sb = sandbox()
 
@@ -326,6 +407,9 @@ def record_output():
 #         scorer=record_output(),
 #     )
 
+RUN_TIMESTAMP = datetime.now().strftime("%Y%m%dT%H%M%S")
+CRM_LOG_PATH = f"monitoring/crm_decisions_{RUN_TIMESTAMP}.jsonl"
+
 
 @task
 def swe_bench_task():
@@ -333,8 +417,9 @@ def swe_bench_task():
         dataset=load_swe_bench_lite(n=1),
         solver=coding_agent(),
         scorer=swe_bench_scorer(),
-        approval=get_crm_approval(),
+        approval=get_crm_approval(log_path=CRM_LOG_PATH),
         sandbox="docker",  # Enable sandboxing for tool calls
+        message_limit=40,  # forces submission or failure well before runaway looping
     )
 
 if __name__ == "__main__":

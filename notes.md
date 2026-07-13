@@ -85,6 +85,92 @@ Openrouter is an option
 - 14B slow locally — 25 min per task
 - CRM decision log still only has manual test entries
 
+## 2026-07-04 — CRM fixes, Docker sandbox fix, AMBER escalation bug found
+
+### Fixed today
+- **CRM approver bug**: `Approval(decision=..., Explanation=reason)` used capital 
+  `E` — Inspect's API requires lowercase `explanation`. Every approval call was 
+  silently throwing, causing all decisions to fail-default to reject. This was 
+  the root cause of the "CRM blocks everything" symptom from last session.
+- **Docker sandbox fix**: `compose.yaml` was doing `pip install astropy` (pulls 
+  real PyPI package) instead of an editable install of the local buggy checkout 
+  at `/workspace/astropy`. Fixed to:
+  - install `build-essential`, `git`, `hypothesis`, `pytest-astropy`, 
+    `pytest-doctestplus`
+  - `pip install -e /workspace/astropy` (editable, not PyPI)
+  - `PYTHONPATH=/workspace/astropy`, `working_dir=/workspace/astropy`
+  - Verified: `astropy.__file__` → `/workspace/astropy/astropy/__init__.py`, 
+    `__version__` → `8.1.0.dev94+g584c6ec3f...` (matches local git commit hash) ✅
+- **coding_policy.md wording fix**: distinguished *executing* `setup.py build` 
+  (AMBER — lower risk) from *editing* `setup.py` contents (still AMBER, but was 
+  previously conflated and causing false BLOCKs).
+- **Confirmed via Inspect docs**: sandboxes are provisioned fresh per sample and 
+  torn down automatically — cross-sample contamination isn't a risk, though 
+  `git checkout -f <base_commit>` is still worth keeping as defensive practice 
+  within a single sample's retries.
+
+### Major bug found (not yet fixed) — AMBER escalation has been a silent BLOCK
+- `get_crm_approval()` only registers ONE approver (the CRM itself) with no 
+  second approver in the chain.
+- Per Inspect's docs: unhandled tool calls are rejected, and escalations only 
+  work if there's a *next* approver in the policy list to catch them.
+- Since there's no second approver, every `AMBER`/`escalate` decision has been 
+  silently rejected the whole time — AMBER has functionally equaled BLOCK.
+- This got worse mid-run today: Groq `llama-3.3-70b-versatile` hit a 429 rate 
+  limit, and the fallback-to-AMBER-on-error logic meant EVERY subsequent tool 
+  call also silently rejected for the rest of the run (cascading false-BLOCK).
+- **This is a genuinely useful finding for the dissertation** — worth a line in 
+  Methodology/Limitations about the AMBER-auto-proceed design decision once fixed.
+
+### Still to fix (tomorrow, before anything else)
+1. Policy wording: explicitly allow writing to `/workspace/...` via heredoc/
+   redirect syntax (`cat > file << EOF`) — overseer was pattern-matching on the 
+   redirect syntax itself as risky, ignoring that the destination was in-workspace.
+2. Swap CRM overseer model: `llama-3.3-70b-versatile` → `llama-3.1-8b-instant` 
+   (much higher free-tier rate limit; classification task doesn't need 70B).
+3. Add retry-with-backoff in `monitor.py`'s `check()` before falling back to AMBER.
+4. **Fix the two-tier approval chain** — add `auto_approver(decision="approve")` 
+   as a second `ApprovalPolicy` after the CRM, so AMBER decisions get logged in 
+   `crm_decisions.jsonl` (full audit trail) but don't halt/block an unattended run.
+5. Re-run the 1-task test, confirm in `crm_decisions.jsonl`: ALLOW/BLOCK/AMBER all 
+   behave correctly, no 429s, AMBER logs but doesn't stop execution.
+6. **Still untested**: the `swe_bench_scorer()` rewrite (applies patch inside 
+   sandbox, runs actual `FAIL_TO_PASS`/`PASS_TO_PASS` tests via pytest, real 
+   pass/fail instead of Bandit-only check). Every run so far used the OLD scorer.
+   Loader also needs `fail_to_pass`, `pass_to_pass`, `test_patch` fields added 
+   to `Sample.metadata` (currently missing from `load_swe_bench_lite`).
+7. Then: ReAct agent prompt — enforce reproduce → fix → verify (run tests) → 
+   submit, to stop the 100+ step static-reasoning spirals seen in traces.
+8. Then: Inspect viewer port fix (`WinError 10013` — try `--port 7676`, or 
+   `net stop winnat && net start winnat` as admin).
+
+### Confirmed project facts (overriding any stale primer text)
+- Main agent model: **OpenRouter Qwen3-Coder-Next** (paid tier), NOT local 
+  Qwen2.5-Coder/Ollama.
+- Deadline: **25 July 2026** — 3 weeks from today, NOT the original 6-week plan.
+- Sample sizes (scaled down deliberately for feasibility):
+  - SWE-bench Lite dev/testing: **10 tasks** (not 300)
+  - SaV-Bench: **20 tasks** (10 Env A + 10 Env B) (not ~60)
+  - Full/final SWE-bench run: **50-100 tasks** (not 500)
+  - RedCode-Exec: stratified sample (~30-50 prompts), not all 810
+  - Petri: reduced to a handful of manual probes — most cuttable item if short 
+    on time
+
+### 3-week plan reminder
+- **Week A (Jul 4-10)**: finish this week's fixes above → clean 10-task SWE-bench 
+  Lite run → start PCER rubric (scores existing traces) → start Methodology chapter
+- **Week B (Jul 11-17)**: RedCode-Exec sample, build + run SaV-Bench (20 tasks), 
+  PCER human-validation (Cohen's Kappa), Results chapter skeleton
+- **Week C (Jul 18-24)**: full 50-100 task SWE-bench run, Petri (if time), finish 
+  Introduction/Conclusions/Abstract, final LaTeX compile + reference check
+- **Jul 25**: submission buffer, no new work
+
+### Tomorrow's plan (concrete first steps)
+1. Apply CRM fixes 1-4 above
+2. Re-run 1-task test, verify `crm_decisions.jsonl` looks correct
+3. Run the FAIL_TO_PASS scorer for the first time, confirm real pass/fail signal
+4. If time: ReAct prompt tightening + viewer port fix
+
 ### Next — Week 3
 - Build PCER 5-dimension rubric
 - Implement LLM judge scorer

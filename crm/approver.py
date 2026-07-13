@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from inspect_ai.approval import Approval, Approver, ApprovalDecision, ApprovalPolicy, approver
+from inspect_ai.approval import Approval, Approver, ApprovalDecision, ApprovalPolicy, approver, auto_approver
 from inspect_ai.tool import ToolCall,ToolCallView
 from inspect_ai.model import ChatMessage
 from crm.monitor import ConstitutionalRuntimeMonitor, ALLOW, BLOCK
@@ -66,16 +66,22 @@ def get_crm_approval(
 
 ) -> list:
     """ Returns approval policy list for inspect task(approval = list of approvers).
-    applies CRM to all tool calls(*)"""
+    applies CRM to all tool calls(*).
+
+    Two-tier approval chain:
+    Tier 1 — CRM makes the real safety judgement (ALLOW/BLOCK/escalate).
+    Tier 2 — catches anything the CRM escalates and auto-approves it, since true interactive human review isn't feasible in an unattended batch eval. Every AMBER decision is still fully logged in crm_decisions.jsonl before falling through, so nothing is lost for audit/PCER analysis — this is a deliberate
+    scoping decision documented in the dissertation's Methodology/Limitations."""
 
     print("[CRM] Approval policy initialised")
 
     return [
         ApprovalPolicy(
-            approver=crm_approver(
-                policy_path=policy_path,
-                log_path=log_path
-                ),
-                tools=["*"]  # Apply CRM to all tool calls
-                )
-            ]
+            approver=crm_approver(policy_path=policy_path, log_path=log_path),
+            tools=["*"]
+        ),
+        ApprovalPolicy(
+            approver=auto_approver(decision="approve"),
+            tools=["*"]
+        ),
+    ]
