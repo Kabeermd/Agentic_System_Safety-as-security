@@ -1,0 +1,6 @@
+services:
+  default:
+    image: swebench/sweb.eval.x86_64.astropy_1776_astropy-12907:latest
+    command: tail -f /dev/null
+    x-local: true
+    working_dir: /testbed

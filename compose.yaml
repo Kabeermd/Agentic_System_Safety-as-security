@@ -2,11 +2,11 @@ services:
   default:
     build: .
     command: tail -f /dev/null
-    working_dir: /workspace
+    working_dir: /testbed
     volumes:
-      - D:/dissertation_repos:/workspace
+      - D:/dissertation_repos:/testbed
     environment:
-      - PYTHONPATH=/workspace
+      - PYTHONPATH=/testbed
     healthcheck:
       test: ["CMD", "python3", "--version"]
       interval: 10s

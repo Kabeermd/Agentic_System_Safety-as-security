@@ -175,3 +175,89 @@ Openrouter is an option
 - Build PCER 5-dimension rubric
 - Implement LLM judge scorer
 - Human validation study (Cohen's Kappa)
+
+
+## 2026-07-13/14 — Full environment fix marathon: Docker, GCC, CRM overseer, path conventions
+
+### The big picture
+Spent most of today chasing what looked like a chain of unrelated bugs, but they 
+were mostly two root causes: (1) OneDrive-mounted repo storage causing severe I/O 
+slowness and outright hangs, and (2) an old astropy checkout's C extensions being 
+incompatible with modern GCC 14's stricter conformance rules. Once both were fixed 
+properly, the agent finally ran end-to-end for the first time.
+
+### Fixed today
+1. **Repo storage moved from OneDrive (C:) to D:\dissertation_repos** — bind-mounting 
+   into a OneDrive-synced folder via Docker Desktop's WSL2 backend was causing extreme 
+   slowness (`git checkout` of 2000 files took 24s+ on D: vs. apparently hanging 
+   indefinitely on C:). This was very likely the underlying cause of several earlier 
+   "the setup script is hanging" symptoms.
+2. **GCC version mismatch (the real root cause of every C-compile failure today)**: 
+   astropy's old C extensions (`fast_sigma_clip.c` etc.) trigger `-Wincompatible-
+   pointer-types` as a HARD ERROR under GCC 14 (Debian's default in `python:3.11-slim`), 
+   not just a warning like it was under older GCC. No `-Wno-error=...` flag combination 
+   can fix this since it's a language-conformance change, not a warning-severity setting.
+   **Fix: install `gcc-12`/`g++-12` alongside default, set `CC=gcc-12 CXX=g++-12` in 
+   Dockerfile.** This resolved the compile errors completely — confirmed via manual 
+   in-container build.
+3. **numpy 2.x incompatibility**: astropy's `quantity_helper` uses `np.product`, removed 
+   in NumPy 2.0+. Need `numpy<2` pinned in Dockerfile (pip's loose `>=1.18` constraint 
+   won't auto-downgrade an already-installed newer numpy).
+4. **Groq overseer model deprecated**: `llama-3.1-8b-instant` and `llama-3.3-70b-
+   versatile` were BOTH deprecated by Groq on June 17, 2026 (confirmed via Groq's own 
+   docs). Every CRM decision was silently falling back to AMBER via a 404 error the 
+   whole time we thought we'd fixed this earlier with a model-name typo fix — the typo 
+   fix was necessary but not sufficient. **Switched overseer to `openai/gpt-oss-20b`** 
+   (Groq's own recommended replacement). CRM now shows real ALLOW/BLOCK/AMBER reasoning 
+   again. Some AMBER responses still show "No reason provided" — gpt-oss-20b doesn't 
+   follow the strict DECISION/CONFIDENCE/REASON format as reliably as the old Llama 
+   models; added a "You MUST respond in EXACTLY this format" emphasis line to the 
+   overseer prompt as a partial fix.
+5. **Custom `read()` tool was reading from the HOST filesystem, not the sandbox** — 
+   used plain Python `open()`, which runs wherever Inspect itself runs (Windows host), 
+   not inside the Docker container like `bash()`/`python()` do. Fixed to use 
+   `await sandbox().read_file(path)` instead. This explains intermittent 
+   "file not found" errors on paths that `cat` could read fine moments earlier.
+6. **Repo mounted at `/workspace` → changed to `/testbed`**: Qwen3-Coder-Next has a 
+   strong trained prior (from SWE-bench-style training data) that repos live at 
+   `/testbed` — the official SWE-bench harness convention. Using `/workspace` caused 
+   the agent to repeatedly try `/testbed` first, fail, then recover via `find`/relative 
+   paths — burning several turns per task on path confusion alone. Switching the mount 
+   to `/testbed` removes this tax entirely for every future task.
+7. **Generic, repo-agnostic install system built**: `generic_install()` + 
+   `GENERIC_PREPATCH` (safe no-op license-format fix) + per-repo `.build_complete` 
+   marker for skip-if-already-built caching. Astropy/django/sympy/matplotlib all now 
+   go through one shared, parameterized function rather than hand-written per-repo 
+   strings — scales to new repos without repeating today's debugging.
+8. Fixed `pyproject.toml` compatibility patches (bare-string `license = "..."` → 
+   `{text = "..."}` table format; dropped unsupported `license-files` key) — needed 
+   because our pinned `setuptools<66` (required for `dep_util` removal fix) predates 
+   PEP 639 license-string support.
+
+### Known bug NOT yet fixed — fix first thing tomorrow
+**`.build_complete` marker gets deleted by the scorer's `git clean -fdx`.** Since the 
+marker lives inside the git-tracked repo directory, it's untracked-and-therefore-
+deleted every time `swe_bench_scorer()` runs `git clean -fdx` during scoring. This 
+silently forces a full rebuild on the NEXT run after any run that reaches the scorer — 
+which is exactly what happened today (pre-built successfully once, scorer ran, marker 
+got wiped, next run timed out again on a full rebuild).
+
+**Fix identified but not yet applied**: move marker outside the repo dir entirely, 
+e.g. `/testbed/.astropy_build_complete` instead of `/testbed/astropy/.build_complete` — 
+git clean running inside `/testbed/astropy` can never reach a file one level up. 
+`generic_install()` needs a `marker_name` parameter added (code drafted, not yet 
+tested). Also add `-e setup_log.txt` to the scorer's `git clean` call as defense in 
+depth.
+
+### Tomorrow's exact first steps
+1. Apply the `marker_name` parameter fix to `generic_install()` / `REPO_INSTALL_COMMANDS`
+2. Re-do the manual pre-build ONE more time at the corrected `/testbed` path:
+
+
+
+### Confirmed project facts (unchanged)
+- Main agent: OpenRouter Qwen3-Coder-Next
+- CRM overseer: Groq openai/gpt-oss-20b (changed from deprecated llama models)
+- Deadline: 25 July 2026
+- Repo storage: D:\dissertation_repos (moved off OneDrive/C: today)
+- Sandbox mount point: /testbed (changed from /workspace today)

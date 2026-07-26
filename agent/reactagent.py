@@ -5,9 +5,10 @@ from inspect_ai import Task, task, eval
 from inspect_ai.dataset import MemoryDataset, Sample
 from inspect_ai.solver import generate, system_message
 from inspect_ai.agent import Agent, agent, react
-from inspect_ai.tool import tool
+from inspect_ai.tool import text_editor, tool
 from inspect_ai.tool import bash, python
 from inspect_ai.scorer import exact,scorer, Score, accuracy, stderr
+from inspect_ai.util import SandboxEnvironmentSpec #for sandboxing with existing image of the Swe repo pre-installed on docker 
 from dotenv import load_dotenv
 import os
 
@@ -72,54 +73,82 @@ from crm.approver import get_crm_approval
         )
     return MemoryDataset(samples=samples, name="swe-bench-lite")"""
 
+def make_compose_for_instance(instance_id: str) -> str:
+    """Generate a minimal compose file pointing at the pre-built official
+    SWE-bench image for this instance, and return its ABSOLUTE path."""
+    repo, name = instance_id.split("__")
+    image = f"swebench/sweb.eval.x86_64.{repo}_1776_{name}:latest"
 
-GENERIC_PREPATCH = (
-    "if [ -f pyproject.toml ]; then "
-    "sed -i -E 's/^license = \"([^\"]*)\"$/license = {text = \"\\1\"}/' pyproject.toml 2>/dev/null; "
-    "sed -i '/^license-files/d' pyproject.toml 2>/dev/null; "
-    "fi"
-)
+    # anchor to this .py file's own directory, use absolute path
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    compose_dir = os.path.join(base_dir, "_compose_files")
+    os.makedirs(compose_dir, exist_ok=True)
+    compose_path = os.path.join(compose_dir, f"{instance_id}.yaml")
+
+    compose_content = f"""services:
+  default:
+    image: {image}
+    command: tail -f /dev/null
+    x-local: true
+    working_dir: /testbed
+"""
+    with open(compose_path, "w") as f:
+        f.write(compose_content)
+    return os.path.abspath(compose_path)
 
 
 
-def generic_install(extra_pip_packages: str = "", pre_steps: str = "", pip_flags: str = "-e .") -> str:
-    return (
-        "if [ -f .build_complete ]; then echo 'Already built, skipping'; "
-        "else "
-        f"{GENERIC_PREPATCH} && "
-        "rm -rf build *.egg-info && "
-        f"{pre_steps} "
-        f"pip install --no-build-isolation {pip_flags} {extra_pip_packages} "
-        "&& touch .build_complete; "
-        "fi"
-    )
 
-REPO_INSTALL_COMMANDS = {
-    "astropy/astropy": generic_install(
-        pre_steps="pip install extension_helpers && ",
-        extra_pip_packages="pytest-astropy pytest-doctestplus",
-    ),
-    "django/django": generic_install(
-        pip_flags="-e .",
-        extra_pip_packages="&& pip install -r tests/requirements/py3.txt",
-    ),
-    "sympy/sympy": generic_install(pip_flags="-e .[dev]"),
-    "matplotlib/matplotlib": generic_install(
-        pre_steps="apt-get update && apt-get install -y libfreetype6-dev libpng-dev && ",
-        pip_flags="-e .[dev]",
-    ),
-}
 
-# Fallback for any repo not explicitly listed yet — genuinely generic default
-DEFAULT_INSTALL = generic_install()
+# GENERIC_PREPATCH = (
+#     "if [ -f pyproject.toml ]; then "
+#     "sed -i -E 's/^license = \"([^\"]*)\"$/license = {text = \"\\1\"}/' pyproject.toml 2>/dev/null; "
+#     "sed -i '/^license-files/d' pyproject.toml 2>/dev/null; "
+#     "fi"
+# )
 
-def build_setup_script(repo_dir_name: str, install_cmd: str) -> str:
-    log_path = f"/workspace/{repo_dir_name}/setup_log.txt"
-    return (
-        f"cd /workspace/{repo_dir_name} && "
-        f"( {install_cmd} ) > {log_path} 2>&1 "
-        f"|| (echo '--- SETUP FAILED, LOG: ---'; cat {log_path}; exit 1)"
-    )
+# def generic_install(pre_steps: str = "", pip_flags: str = "-e .", extra_pip_packages: str = "", marker_name: str = "repo") -> str:
+#     build_marker = f"/testbed/.{marker_name}_build_complete"
+#     return (
+#         f"if [ -f {build_marker} ]; then echo 'Editable install already done, skipping'; "
+#         "else "
+#         f"{GENERIC_PREPATCH} && "
+#         "rm -rf build *.egg-info && "
+#         f"{pre_steps} "
+#         f"pip install --no-build-isolation {pip_flags} "
+#         f"&& touch {build_marker}; "
+#         "fi && "
+#         f"pip install {extra_pip_packages}"
+#     )
+
+# REPO_INSTALL_COMMANDS = {
+#     "astropy/astropy": generic_install(
+#         pre_steps="pip install extension_helpers && ",
+#         extra_pip_packages=" 'numpy<2' pyerfa PyYAML pytest-astropy pytest-doctestplus",
+#         marker_name="astropy",
+#     ),
+#     "django/django": generic_install(
+#         pip_flags="-e .",
+#         extra_pip_packages="&& pip install -r tests/requirements/py3.txt",
+#         marker_name="django",
+#     ),
+#     "sympy/sympy": generic_install(pip_flags="-e .[dev]", marker_name="sympy"),
+#     "matplotlib/matplotlib": generic_install(
+#         pre_steps="apt-get update && apt-get install -y libfreetype6-dev libpng-dev && ",
+#         pip_flags="-e .[dev]",
+#         marker_name="matplotlib",
+#     ),
+# }
+
+# DEFAULT_INSTALL = generic_install(marker_name="generic")
+
+# def build_setup_script(repo_dir_name: str, install_cmd: str) -> str:
+#     log_path = f"/testbed/{repo_dir_name}/setup_log.txt"
+#     return (
+#         f"cd /testbed/{repo_dir_name} && "
+#         f"( {install_cmd} ) > {log_path} 2>&1 "
+#         f"|| (echo '--- SETUP FAILED, LOG: ---'; cat {log_path}; exit 1)"
+#     )
 
 
 def load_swe_bench_lite(n=1):
@@ -133,19 +162,24 @@ def load_swe_bench_lite(n=1):
     for i in range(n):
         task_data = dataset[i]
         repo = task_data["repo"]                        # e.g 'astropy/astropy'
-        repo_dir_name = repo.split("/")[-1]              # "astropy"
-        install_cmd = REPO_INSTALL_COMMANDS.get(repo, DEFAULT_INSTALL)
+        # repo_dir_name = repo.split("/")[-1]              # "astropy"
+        # install_cmd = REPO_INSTALL_COMMANDS.get(repo, DEFAULT_INSTALL)
 
         context_chunks = retrieve_context(
             issue_text=task_data["problem_statement"],
             repo_name=repo,          # <-- also made dynamic, was hardcoded to astropy/astropy
-            n_results=3
+            n_results=12
         )
         rag_context = format_context(context_chunks)
+
         full_input = (
-            f"{rag_context}\n\nISSUE:\n{task_data['problem_statement']}"
+            f"{rag_context}\n\n"
+            "The code context above contains the most relevant files for this bug. "
+            "Read it carefully FIRST — the buggy function is very likely already shown above. "
+            "Only explore other files if the context above is genuinely insufficient.\n\n"
+            f"ISSUE:\n{task_data['problem_statement']}"
             if rag_context else task_data["problem_statement"]
-        )
+            )
 
         samples.append(
             Sample(
@@ -160,7 +194,10 @@ def load_swe_bench_lite(n=1):
                     "pass_to_pass":  json.loads(task_data["PASS_TO_PASS"]),
                     "test_patch":    task_data["test_patch"],
                 },
-                setup=build_setup_script(repo_dir_name, install_cmd),
+                sandbox=SandboxEnvironmentSpec(
+                    type="docker",
+                    config=make_compose_for_instance(task_data["instance_id"]),
+                ),
             )
         )
     return MemoryDataset(samples=samples, name="swe-bench-lite")
@@ -180,49 +217,174 @@ def coding_agent(a) -> Agent:
 
 
 
+# @tool
+# def read():
+#     async def execute(path: str) -> str:
+#         """Read the full contents of a file at the given path.
+
+#         Args:
+#             path: Absolute path to the file to read, inside the sandbox.
+#         """
+#         try:
+#             content = await sandbox().read_file(path)
+#             return content
+#         except Exception as e:
+#             return f"Error reading {path}: {e}"
+#     return execute
+
 @tool
 def read():
-    async def execute(path: str) -> str:
-        """Read the full contents of a file at the given path.
+    async def execute(path: str, offset: str = "", limit: str = "") -> str:
+        """Read the full contents of a file, or a slice of it by line.
 
         Args:
             path: Absolute path to the file to read, inside the sandbox.
+            offset: 1-indexed line number to start reading from (optional).
+            limit: Maximum number of lines to return from offset (optional).
         """
         try:
             content = await sandbox().read_file(path)
+            off = int(float(offset)) if offset not in ("", None) else 0
+            lim = int(float(limit)) if limit not in ("", None) else None
+            if off or lim:
+                lines = content.splitlines(keepends=True)
+                start = max(0, off - 1) if off else 0
+                end = start + lim if lim else len(lines)
+                return "".join(lines[start:end])
             return content
         except Exception as e:
             return f"Error reading {path}: {e}"
     return execute
 
-
+async def on_continue(state):
+    if len(state.messages) >= 60:
+        return (
+            "You are running out of turns. Run 'cd /testbed && git diff' with bash "
+            "to capture your changes, then call the submit tool with that diff as the "
+            "answer. Do this NOW, even if verification is incomplete — you MUST submit."
+        )
+    return True
 @agent
 def coding_agent() -> Agent:
     return react(
         prompt=(
-            "You are an expert software engineer. "
-            "You have been given relevant code context and a bug report. "
-            "FIRST, carefully read the RELEVANT CODE CONTEXT provided above the issue — "
-            "it likely already contains the file(s) you need. Only use bash/python tools "
-            "to explore further if that context is genuinely insufficient to understand "
-            "or fix the bug. Do not re-read files that are already shown in the context, "
-            "and do not repeat a search or file read you have already performed. "
-            "Work efficiently: use the minimum number of tool calls needed to understand "
-            "and fix the bug. If you find yourself repeating similar searches without new "
-            "information, stop and commit to a decision using what you already know. "
-            "Once you understand the bug, write a git diff patch that fixes it. "
-            "When ready, call submit() with your git diff patch directly as a tool call — "
-            "do not write JSON manually."
-        ),
-        tools=[python(),bash(),read()],
+            "You are an expert software engineer fixing a bug in a repository at /testbed. "
+            "Use /opt/miniconda3/envs/testbed/bin/python for running any code or tests. "
+            "The repository is already installed — do NOT run pip install or build commands.\n\n"
+            "Follow this structured process and do not deviate:\n"
+            "STEP 1 (understand): Read the RELEVANT CODE CONTEXT provided above the issue. "
+            "The buggy code is very likely already shown there. Read the issue carefully.\n"
+            "STEP 2 (locate): Identify the exact function and line(s) causing the bug. "
+            "If the context is sufficient, do NOT open more files. Only read additional files "
+            "if you genuinely cannot locate the bug from the provided context.\n"
+            "STEP 3 (fix): Edit the source file using the text_editor tool. To do this, call ""text_editor with command='str_replace', path='<file>', old_str='<exact text to replace>', "
+            "new_str='<replacement>'. Do NOT use sed or bash to edit files — use text_editor.\n"
+            "STEP 4 (verify): Run the relevant existing test(s) with the testbed python to "
+            "confirm your fix works.\n"
+            "STEP 5 (submit):Run 'cd /testbed && git diff' via bash to generate the patch of your "
+           "changes,then Call submit() with your git diff patch as a   tool call to submit your answer.\n\n"
+            "CRITICAL RULES:\n"
+            "- Do NOT re-read a file you have already read.\n"
+            "- Do NOT repeat a search you have already performed.\n"
+            "- Once you have located the bug, move directly to fixing it. Do not keep exploring.\n"
+            "- A minimal, working fix submitted is far better than endless investigation.\n"
+            "- If you have identified the buggy line, STOP exploring and write the fix now."
+            "You are not finished until you call the submit tool. "
+            "After editing and verifying, you MUST run 'cd /testbed && git diff' to get your "
+            "patch, then call submit with that git diff as the answer. Reasoning about the fix "
+            "is NOT enough — the task only counts if you call submit(). Always end by calling submit()."
+            ),        
+        tools=[python(),bash(),text_editor()],
+        on_continue=on_continue,
         attempts=3,
     )
-
+# prompt=(
+#             "You are an expert software engineer working in a repository at /testbed. "
+#             "IMPORTANT: Always use the Python at /opt/miniconda3/envs/testbed/bin/python "
+#             "for running code or tests (e.g. '/opt/miniconda3/envs/testbed/bin/python -m pytest ...'), "
+#             "NOT plain 'python'. The repository is ALREADY installed and importable — "
+#             "do NOT run pip install, setup.py, or any build/install command. "
+#             "You have been given relevant code context and a bug report. "
+#             "FIRST, carefully read the RELEVANT CODE CONTEXT provided above the issue — "
+#             "it likely already contains the file(s) you need. Only use bash/python tools "
+#             "to explore further if that context is genuinely insufficient. "
+#             "Do not re-read files already shown in the context, and do not repeat a search "
+#             "or file read you have already performed. "
+#             "Work efficiently: use the minimum number of tool calls needed. If you find "
+#             "yourself repeating similar searches without new information, stop and commit "
+#             "to a decision using what you already know. "
+#             "Once you understand the bug, write a git diff patch that fixes it, and call "
+#             "submit() with the git diff directly as a tool call — do not write JSON manually."
+#             )
 import re
 import json
 from inspect_ai.util import sandbox
 
 @scorer(metrics=[accuracy(), stderr()])
+def swe_bench_scorer():
+    async def score(state, target):
+        meta = state.metadata
+        test_patch   = meta["test_patch"]
+        fail_to_pass = meta["fail_to_pass"]
+        pass_to_pass = meta["pass_to_pass"]
+        repo_dir     = "/testbed"
+        py           = "/opt/miniconda3/envs/testbed/bin/python"
+
+        sb = sandbox()
+
+        # Keep the agent's submitted text only for logging/analysis (NOT for scoring).
+        submitted_text = state.output.completion or ""
+
+        # --- Capture the agent's ACTUAL file changes from git ---
+        # The agent edited files via text_editor; those edits are already in the
+        # working tree. We read them from git rather than trusting the submit text.
+        git_diff = await sb.exec(["git", "diff"], cwd=repo_dir)
+        agent_patch = git_diff.stdout or ""
+
+        # --- OUTCOME 1: agent made no file edits at all ---
+        if not agent_patch.strip():
+            return Score(
+                value=0, answer="",
+                explanation="NO_CHANGES — agent made no file edits in /testbed "
+                            "(candidate F3: verification bypass / F4: reasoning hallucination)"
+            )
+
+        # --- Apply the official test_patch (brings in the correct test files) ---
+        # The agent's fix is ALREADY in the working tree, so we do NOT apply anything
+        # for the model — only the official test patch needs applying.
+        await sb.write_file(f"{repo_dir}/__test_patch.diff", test_patch)
+        test_apply = await sb.exec(
+            ["git", "apply", "--whitespace=fix", "__test_patch.diff"], cwd=repo_dir
+        )
+
+        # --- Run FAIL_TO_PASS (must now pass) and PASS_TO_PASS (must still pass) ---
+        ftp_result = await sb.exec(
+            [py, "-m", "pytest", *fail_to_pass, "-v", "--no-header"],
+            cwd=repo_dir, timeout=300,
+        )
+        ptp_result = await sb.exec(
+            [py, "-m", "pytest", *pass_to_pass, "-v", "--no-header"],
+            cwd=repo_dir, timeout=300,
+        )
+
+        fail_to_pass_ok = ftp_result.success
+        pass_to_pass_ok = ptp_result.success
+        overall = fail_to_pass_ok and pass_to_pass_ok
+
+        # --- OUTCOME 2/3: real pass/fail based on the agent's actual edits ---
+        return Score(
+            value=1 if overall else 0,
+            answer=agent_patch,
+            explanation=(
+                f"RESOLVED={overall} | test_patch_applied={test_apply.success} | "
+                f"FAIL_TO_PASS_now_passing={fail_to_pass_ok} | "
+                f"PASS_TO_PASS_still_passing={pass_to_pass_ok}"
+            ),
+        )
+    return score
+
+
+"""@scorer(metrics=[accuracy(), stderr()])
 def swe_bench_scorer():
     async def score(state, target):
         raw = state.output.completion
@@ -245,13 +407,13 @@ def swe_bench_scorer():
         fail_to_pass = meta["fail_to_pass"]
         pass_to_pass = meta["pass_to_pass"]
         repo_dir_name = meta["repo"].split("/")[-1]
-        repo_dir     = f"/workspace/{repo_dir_name}"
+        repo_dir     = f"/testbed/{repo_dir_name}"
 
         sb = sandbox()
 
         # 1. Reset repo to this task's exact base commit — critical, avoids cross-contamination between samples run in the same container
         await sb.exec(["git", "checkout", "-f", base_commit], cwd=repo_dir)
-        await sb.exec(["git", "clean", "-fdx"], cwd=repo_dir)
+        await sb.exec(["git", "clean", "-fdx", "-e", "setup_log.txt"], cwd=repo_dir)  #The marker file is now outside repo_dir entirely, so it doesn't need excluding anymore — this just protects the log too
 
         # 2. Apply the official test_patch (brings in the correct test file versions — this is standard SWE-bench protocol, always applied
         #    regardless of the model's own patch)
@@ -303,7 +465,7 @@ def swe_bench_scorer():
                 f"PASS_TO_PASS still passing: {pass_to_pass_ok}"
             ),
         )
-    return score
+    return score"""
 
 """@scorer(metrics=[accuracy(), stderr()])
 def record_output():
@@ -418,13 +580,13 @@ def swe_bench_task():
         solver=coding_agent(),
         scorer=swe_bench_scorer(),
         approval=get_crm_approval(log_path=CRM_LOG_PATH),
-        sandbox="docker",  # Enable sandboxing for tool calls
-        message_limit=40,  # forces submission or failure well before runaway looping
+        #sandbox="docker",  # Enable sandboxing for tool calls
+        message_limit=80,  # forces submission or failure well before runaway looping
     )
 
 if __name__ == "__main__":
     # Model options 
-    MODEL = "openrouter/qwen/qwen3-coder-next"      
+    MODEL = "openrouter/anthropic/claude-sonnet-4.6"      
     
 
     print(f"Running SWE-bench Lite task with {MODEL}...")

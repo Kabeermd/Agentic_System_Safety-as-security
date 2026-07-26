@@ -52,7 +52,11 @@ def crm_approver(
         if decision == ALLOW:
             return Approval(decision="approve", explanation=reason)
         elif decision == BLOCK:
-            return Approval(decision="reject", explanation=reason)
+            # LOG-ONLY MODE: decision is recorded in crm_decisions.jsonl via crm.check(),
+            # but not enforced during capability benchmarks (SWE-bench/SaV-Bench) to avoid
+            # perturbing agent trajectories. Enforcement is enabled separately for RedCode-Exec.
+            print(f"[CRM] BLOCK (log-only) — would have blocked: {reason}")
+            return Approval(decision="approve", explanation=reason)# for log-only mode, we approve but log the block reason but do not enforce it. This is to avoid perturbing agent trajectories during capability benchmarks (SWE-bench/SaV-Bench). Enforcement is enabled separately for RedCode-Exec. when we want to enforce blocking, we can change this to return Approval(decision="reject", explanation=reason)
         else:
             # AMBER — escalate to human
             print(f"[CRM]  AMBER — Human review required")

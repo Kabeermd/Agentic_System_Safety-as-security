@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV CC=gcc-12
 ENV CXX=g++-12
 
-RUN pip install --no-cache-dir "setuptools<66" wheel pytest hypothesis numpy Cython extension_helpers
+RUN pip install --no-cache-dir "setuptools<66" wheel pytest hypothesis "numpy<2" Cython extension_helpers
