@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="680.843437pt" height="435.6pt" viewBox="0 0 680.843437 435.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-08T17:47:47.169085</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 435.6 
+L 680.843437 435.6 
+L 680.843437 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 44.063438 404.9 
+L 673.643438 404.9 
+L 673.643438 113.92 
+L 44.063438 113.92 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="text_1">
+      <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="130.524134" y="425.65" transform="rotate(-0 130.524134 425.65)">Reasoning Coherence</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="text_2">
+      <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="282.74367" y="425.65" transform="rotate(-0 282.74367 425.65)">Tool Efficiency</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="text_3">
+      <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="434.963205" y="425.65" transform="rotate(-0 434.963205 425.65)">Recovery Rate</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="text_4">
+      <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="587.182741" y="425.65" transform="rotate(-0 587.182741 425.65)">Verification Completion</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_1">
+      <path d="M 44.063438 404.9 
+L 673.643438 404.9 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="411.0875" transform="rotate(-0 31.563438 411.0875)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_2">
+      <path d="M 44.063438 351.014815 
+L 673.643438 351.014815 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="357.202315" transform="rotate(-0 31.563438 357.202315)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_3">
+      <path d="M 44.063438 297.12963 
+L 673.643438 297.12963 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="303.31713" transform="rotate(-0 31.563438 303.31713)">2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_4">
+      <path d="M 44.063438 243.244444 
+L 673.643438 243.244444 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="249.431944" transform="rotate(-0 31.563438 249.431944)">3</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_5">
+      <path d="M 44.063438 189.359259 
+L 673.643438 189.359259 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="195.546759" transform="rotate(-0 31.563438 195.546759)">4</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_6">
+      <path d="M 44.063438 135.474074 
+L 673.643438 135.474074 
+" clip-path="url(#pf0090576bf)" style="fill: none; stroke: #ececf2; stroke-width: 1.5; stroke-linecap: round"/>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 16.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: end; fill: #7a7a93" x="31.563438" y="141.661574" transform="rotate(-0 31.563438 141.661574)">5</text>
+     </g>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 12px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="16.2" y="259.41" transform="rotate(-90 16.2 259.41)">Mean score (1–5)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 72.68071 404.9 
+L 127.479743 404.9 
+L 127.479743 200.136296 
+L 72.68071 200.136296 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #4a5fc1; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 224.900246 404.9 
+L 279.699279 404.9 
+L 279.699279 232.467407 
+L 224.900246 232.467407 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #4a5fc1; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 377.119782 404.9 
+L 431.918815 404.9 
+L 431.918815 200.136296 
+L 377.119782 200.136296 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #4a5fc1; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 529.339318 404.9 
+L 584.13835 404.9 
+L 584.13835 146.251111 
+L 529.339318 146.251111 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #4a5fc1; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 133.568525 404.9 
+L 188.367557 404.9 
+L 188.367557 243.244444 
+L 133.568525 243.244444 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #d9534f; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 285.78806 404.9 
+L 340.587093 404.9 
+L 340.587093 254.021481 
+L 285.78806 254.021481 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #d9534f; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 438.007596 404.9 
+L 492.806629 404.9 
+L 492.806629 232.467407 
+L 438.007596 232.467407 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #d9534f; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 590.227132 404.9 
+L 645.026165 404.9 
+L 645.026165 167.805185 
+L 590.227132 167.805185 
+z
+" clip-path="url(#pf0090576bf)" style="fill: #d9534f; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 44.063438 404.9 
+L 44.063438 113.92 
+" style="fill: none; stroke: #ececf2; stroke-width: 1.875; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 44.063438 404.9 
+L 673.643437 404.9 
+" style="fill: none; stroke: #ececf2; stroke-width: 1.875; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="100.080227" y="193.325481" transform="rotate(-0 100.080227 193.325481)">3.8</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="252.299762" y="225.656593" transform="rotate(-0 252.299762 225.656593)">3.2</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="404.519298" y="193.325481" transform="rotate(-0 404.519298 193.325481)">3.8</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="556.738834" y="139.440296" transform="rotate(-0 556.738834 139.440296)">4.8</text>
+   </g>
+   <g id="text_16">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="160.968041" y="236.43363" transform="rotate(-0 160.968041 236.43363)">3.0</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="313.187577" y="247.210667" transform="rotate(-0 313.187577 247.210667)">2.8</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="465.407113" y="225.656593" transform="rotate(-0 465.407113 225.656593)">3.2</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="617.626648" y="160.99437" transform="rotate(-0 617.626648 160.99437)">4.4</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_13">
+     <path d="M 569.619531 132.07 
+L 591.619531 132.07 
+L 591.619531 124.37 
+L 569.619531 124.37 
+z
+" style="fill: #4a5fc1; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: start; fill: #22223b" x="600.419531" y="132.07" transform="rotate(-0 600.419531 132.07)">Arch (n=5)</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 569.619531 148.57 
+L 591.619531 148.57 
+L 591.619531 140.87 
+L 569.619531 140.87 
+z
+" style="fill: #d9534f; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: start; fill: #22223b" x="600.419531" y="148.57" transform="rotate(-0 600.419531 148.57)">Baseline (n=5)</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_22">
+   <text style="font-weight: 700; font-size: 16px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="340.283437" y="19.2" transform="rotate(-0 340.283437 19.2)">PCER — mean score per dimension</text>
+  </g>
+  <g id="text_23">
+   <text style="font-size: 10.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="340.283437" y="33.12" transform="rotate(-0 340.283437 33.12)">Higher is better; Safety Compliance present only where the CRM annotated</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf0090576bf">
+   <rect x="44.063438" y="113.92" width="629.58" height="290.98"/>
+  </clipPath>
+ </defs>
+</svg>

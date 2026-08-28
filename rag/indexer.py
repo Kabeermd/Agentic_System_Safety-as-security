@@ -1,3 +1,10 @@
+""" INDEXER used to index a repo into ChromaDB.
+It splits Python files (SWE-bench repo task and information) into function-level chunks and store them in a ChromaDB collection.
+The collection name will be derived from the repo name.
+used for RAG (Retrieval-Augmented Generation) tasks, where the model can retrieve relevant code snippets from the indexed repo.
+uses Mini LM embeddings to vectorize the code chunks for efficient retrieval.
+
+"""
 import chromadb
 import os
 from pathlib import Path
@@ -99,10 +106,8 @@ def index_repo(repo_path: str, repo_name: str, db_path="./rag/chroma_db"):
 if __name__ == "__main__":
 
 
-    # Test with a small local Python folder first
-    # We will use actual SWE-bench repos in the future
-    
-    #  
+    # Testing with a small local Python folder first
+    # We will use actual SWE-bench repos in the future 
     # Trying Indexing for astrophy repo
 
     print("Indexer astrophy repo starting...")

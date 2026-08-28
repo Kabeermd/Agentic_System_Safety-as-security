@@ -1,3 +1,8 @@
+""" Draft script to read and print the latest eval trace. 
+when run as a script, it will print the latest eval trace to the console.
+used when inspect viewer is not available, or for quick inspection of the latest trace.
+"""
+
 from inspect_ai.log import read_eval_log
 import glob
 import os
@@ -18,9 +23,9 @@ def read_latest_trace(log_dir="./results"):
     print(f"Model:   {log.eval.model}")
     print(f"Task:    {log.eval.task}")
     print(f"Status:  {log.status}")
-    print(f"Samples: {len(log.samples)}")
+    print(f"Samples: {len(log.samples)}") # type: ignore
     
-    for sample in log.samples:
+    for sample in log.samples: # type: ignore
         print(f"\n{'='*60}")
         print(f"SAMPLE ID: {sample.id}")
         print(f"{'='*60}")
@@ -31,7 +36,7 @@ def read_latest_trace(log_dir="./results"):
         print(f"\nOUTPUT (first 500 chars):")
         print(sample.output.completion[:500])
         
-        print(f"\nMESSAGES IN TRACE: {len(sample.messages)}")
+        print(f"\nMESSAGES IN TRACE: {len(sample.messages)}") # type: ignore
         for i, msg in enumerate(sample.messages):
             print(f"\n[Step {i+1}] Role: {msg.role}")
             content = str(msg.content)[:150]

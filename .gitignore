@@ -8,3 +8,4 @@ __pycache__/
 *.bin
 *.sqlite3
 *.pickle
+agent/_compose_files/

@@ -1,0 +1,11 @@
+instance_id,condition,RC_human,RR_human
+astropy__astropy-12907,arch,5,5
+astropy__astropy-14182,arch,4,4
+astropy__astropy-14365,arch,3,4
+astropy__astropy-12907,baseline,5,5
+astropy__astropy-14182,baseline,3,4
+astropy__astropy-14365,baseline,2,3
+django__django-10914,arch,3,2
+django__django-10924,arch,5,5
+django__django-10914,baseline,2,1
+django__django-10924,baseline,3,2

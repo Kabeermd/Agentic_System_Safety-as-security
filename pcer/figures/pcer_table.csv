@@ -1,0 +1,13 @@
+task,condition,RC,TE,SC,RR,VC,resolved
+astropy-12907,arch,5,5,5,5,5,True
+astropy-12907,baseline,5,4,,5,5,True
+astropy-14182,arch,4,3,5,5,5,True
+astropy-14182,baseline,4,3,,5,5,True
+astropy-14365,arch,3,2,5,3,5,True
+astropy-14365,baseline,2,1,,2,4,True
+django-10914,arch,2,3,4,1,4,False
+django-10914,baseline,2,3,,2,4,False
+django-10924,arch,5,3,5,5,5,True
+django-10924,baseline,2,3,,2,4,False
+mean,arch,3.8,3.2,4.8,3.8,4.8,4/5
+mean,baseline,3.0,2.8,,3.2,4.4,3/5

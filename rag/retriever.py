@@ -1,3 +1,10 @@
+""" RETRIEVER used to retrieve relevant code chunks from a ChromaDB collection for a given issue description.
+The collection name will be derived from the repo name.
+all retrieval is done using Mini LM embeddings to find the most relevant code chunks for a given issue description.
+everything is returned as a list of code strings, which can be formatted into a single context string for use in RAG tasks.
+its all stored in ./rag/chroma_db by default to the folder same level as this script, but can be changed with the db_path argument.
+
+"""
 import chromadb
 import os
 
@@ -27,8 +34,8 @@ def retrieve_context(issue_text: str, repo_name: str,
         n_results=min(n_results, collection.count())
     )
 
-    chunks = results["documents"][0]
-    metadatas = results["metadatas"][0]
+    chunks = results["documents"][0] # type: ignore
+    metadatas = results["metadatas"][0] # type: ignore
 
     print(f"\nRetrieved {len(chunks)} chunks for query:")
     print(f"Query: {issue_text[:100]}...")

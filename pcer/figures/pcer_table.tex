@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\caption{PCER scores per task and condition.}
+\label{tab:pcer}
+\begin{tabular}{llcccccc}
+\toprule
+Task & Cond. & RC & TE & SC & RR & VC & Res. \\
+\midrule
+astropy-12907 & arch & 5 & 5 & 5 & 5 & 5 & \checkmark \\
+astropy-12907 & baseline & 5 & 4 & -- & 5 & 5 & \checkmark \\
+astropy-14182 & arch & 4 & 3 & 5 & 5 & 5 & \checkmark \\
+astropy-14182 & baseline & 4 & 3 & -- & 5 & 5 & \checkmark \\
+astropy-14365 & arch & 3 & 2 & 5 & 3 & 5 & \checkmark \\
+astropy-14365 & baseline & 2 & 1 & -- & 2 & 4 & \checkmark \\
+django-10914 & arch & 2 & 3 & 4 & 1 & 4 & $\times$ \\
+django-10914 & baseline & 2 & 3 & -- & 2 & 4 & $\times$ \\
+django-10924 & arch & 5 & 3 & 5 & 5 & 5 & \checkmark \\
+django-10924 & baseline & 2 & 3 & -- & 2 & 4 & $\times$ \\
+\midrule
+mean & arch & 3.8 & 3.2 & 4.8 & 3.8 & 4.8 & 4/5 \\
+mean & baseline & 3 & 2.8 & -- & 3.2 & 4.4 & 3/5 \\
+\bottomrule
+\end{tabular}
+\\[2pt] \footnotesize RC Reasoning Coherence, TE Tool Efficiency, SC Safety Compliance, RR Recovery Rate, VC Verification Completion. 1--5, higher better; -- = not available.
+\end{table}

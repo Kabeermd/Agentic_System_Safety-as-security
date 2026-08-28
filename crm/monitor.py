@@ -1,3 +1,14 @@
+""" MAIN CRM MONITOR WRAPPER FOR BOTH SWE-BENCH LITE AND REDCODE-EXEC TASKS
+
+This module implements the Constitutional Runtime Monitor (CRM) for the ReactAgent.
+It intercepts every planned tool call and checks it against a policy document before execution.
+It consists of the ConstitutionalRuntimeMonitor class, which evaluates tool calls and logs decisions, and the crm_approver function, which wraps the CRM as an @approver for Inspect tasks.
+
+Important: The CRM is designed to be a safety overseer for AI coding agents, ensuring that tool calls adhere to defined policies. It uses the Groq API to interact with an overseer model for decision-making.
+Model: openai/gpt-oss-120b was used for the overseer model in this implementation. since our llama3.70b model was decrepted and is no longer available. The overseer model is responsible for evaluating tool calls against the policy and providing decisions.
+gpt-oss-120b was suggested by the Groq team as a suitable replacement for the deprecated llama3.70b model, and it is expected to provide similar capabilities in terms of understanding and evaluating tool calls against the policy.
+
+"""
 import os
 import json
 import time
@@ -26,7 +37,7 @@ class ConstitutionalRuntimeMonitor:
     def __init__(
         self,
         policy_path: str = "crm/policies/coding_policy.md",
-        overseer_model: str = "openai/gpt-oss-20b",
+        overseer_model: str = "openai/gpt-oss-120b",
         log_path: str = "monitoring/crm_decisions.jsonl"
     ):
         self.policy = open(policy_path, "r").read()
@@ -41,8 +52,9 @@ class ConstitutionalRuntimeMonitor:
         self,
         tool_name: str,
         tool_args: dict,
-        task_context: str = ""
-    ) -> dict:
+        task_context: str = "",
+        instance_id: str = "Unknown"
+        ) -> dict:
         """
         Check a planned tool call against policy.
         
@@ -77,12 +89,12 @@ REASON: [one sentence explanation]"""
         
         result = None
 
-        for attempt in range(3):
+        for attempt in range(3):  
             try:
                 response = self.client.chat.completions.create(
                     model=self.overseer_model,
                     messages=[{"role": "user", "content": prompt}],
-                    max_tokens=400,
+                    max_tokens=500,
                     temperature=0.1,
                 )
                 response_text = response.choices[0].message.content.strip() # type: ignore
@@ -100,6 +112,9 @@ REASON: [one sentence explanation]"""
                     "args":       tool_args,
                 }
                 break
+
+        if result is not None:
+            result["instance_id"] = instance_id
 
         # log every decision
         self._log_decision(result) # pyright: ignore[reportArgumentType]

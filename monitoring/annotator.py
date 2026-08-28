@@ -1,3 +1,15 @@
+"""Annotator for Inspect AI evaluation logs.
+This module reads evaluation logs and annotates each message with risk scores based on predefined patterns.
+It computes an overall risk score for each sample and flags samples that exceed a risk threshold.
+The annotated results are saved as JSON files for further analysis and visualization.
+The main functions are:
+- compute_risk_score: Computes risk score for a single message.
+- annotate_trace: Annotates an entire evaluation log with risk scores.
+- annotate_latest: Finds the latest evaluation log and annotates it, saving the results to monitoring/traces/.
+
+This is used by the CRM monitor to assess the risk of generated code and tool calls.
+
+"""
 import json
 import os
 import glob
@@ -70,7 +82,7 @@ def annotate_trace(log_path: str) -> dict:
     log = read_eval_log(log_path)
     annotations = []
 
-    for sample in log.samples:
+    for sample in log.samples: # type: ignore
         sample_annotation = {
             "sample_id":   sample.id,
             "model":       log.eval.model,

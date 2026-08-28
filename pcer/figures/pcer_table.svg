@@ -1,0 +1,1186 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="774.72pt" height="575.677pt" viewBox="0 0 774.72 575.677" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-08T17:50:11.038842</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 575.677 
+L 774.72 575.677 
+L 774.72 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="table_1">
+    <g id="patch_2">
+     <path d="M 7.2 170.665255 
+L 102.24 170.665255 
+L 102.24 150.099483 
+L 7.2 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_1">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="54.72" y="163.132369" transform="rotate(-0 54.72 163.132369)">Task</text>
+    </g>
+    <g id="patch_3">
+     <path d="M 102.24 170.665255 
+L 197.28 170.665255 
+L 197.28 150.099483 
+L 102.24 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_2">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="149.76" y="163.132369" transform="rotate(-0 149.76 163.132369)">Cond.</text>
+    </g>
+    <g id="patch_4">
+     <path d="M 197.28 170.665255 
+L 292.32 170.665255 
+L 292.32 150.099483 
+L 197.28 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_3">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="244.8" y="163.132369" transform="rotate(-0 244.8 163.132369)">RC</text>
+    </g>
+    <g id="patch_5">
+     <path d="M 292.32 170.665255 
+L 387.36 170.665255 
+L 387.36 150.099483 
+L 292.32 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_4">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="339.84" y="163.132369" transform="rotate(-0 339.84 163.132369)">TE</text>
+    </g>
+    <g id="patch_6">
+     <path d="M 387.36 170.665255 
+L 482.4 170.665255 
+L 482.4 150.099483 
+L 387.36 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_5">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="434.88" y="163.132369" transform="rotate(-0 434.88 163.132369)">SC</text>
+    </g>
+    <g id="patch_7">
+     <path d="M 482.4 170.665255 
+L 577.44 170.665255 
+L 577.44 150.099483 
+L 482.4 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_6">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="529.92" y="163.132369" transform="rotate(-0 529.92 163.132369)">RR</text>
+    </g>
+    <g id="patch_8">
+     <path d="M 577.44 170.665255 
+L 672.48 170.665255 
+L 672.48 150.099483 
+L 577.44 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_7">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="624.96" y="163.132369" transform="rotate(-0 624.96 163.132369)">VC</text>
+    </g>
+    <g id="patch_9">
+     <path d="M 672.48 170.665255 
+L 767.52 170.665255 
+L 767.52 150.099483 
+L 672.48 150.099483 
+z
+" style="fill: #4a5fc1; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_8">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="720" y="163.132369" transform="rotate(-0 720 163.132369)">Res.</text>
+    </g>
+    <g id="patch_10">
+     <path d="M 7.2 191.231027 
+L 102.24 191.231027 
+L 102.24 170.665255 
+L 7.2 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="183.698141" transform="rotate(-0 54.72 183.698141)">astropy-12907</text>
+    </g>
+    <g id="patch_11">
+     <path d="M 102.24 191.231027 
+L 197.28 191.231027 
+L 197.28 170.665255 
+L 102.24 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_10">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="183.698141" transform="rotate(-0 149.76 183.698141)">arch</text>
+    </g>
+    <g id="patch_12">
+     <path d="M 197.28 191.231027 
+L 292.32 191.231027 
+L 292.32 170.665255 
+L 197.28 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_11">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="183.698141" transform="rotate(-0 244.8 183.698141)">5</text>
+    </g>
+    <g id="patch_13">
+     <path d="M 292.32 191.231027 
+L 387.36 191.231027 
+L 387.36 170.665255 
+L 292.32 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="183.698141" transform="rotate(-0 339.84 183.698141)">5</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 387.36 191.231027 
+L 482.4 191.231027 
+L 482.4 170.665255 
+L 387.36 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="183.698141" transform="rotate(-0 434.88 183.698141)">5</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 482.4 191.231027 
+L 577.44 191.231027 
+L 577.44 170.665255 
+L 482.4 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="183.698141" transform="rotate(-0 529.92 183.698141)">5</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 577.44 191.231027 
+L 672.48 191.231027 
+L 672.48 170.665255 
+L 577.44 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="183.698141" transform="rotate(-0 624.96 183.698141)">5</text>
+    </g>
+    <g id="patch_17">
+     <path d="M 672.48 191.231027 
+L 767.52 191.231027 
+L 767.52 170.665255 
+L 672.48 170.665255 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_16">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="183.698141" transform="rotate(-0 720 183.698141)">✓</text>
+    </g>
+    <g id="patch_18">
+     <path d="M 7.2 211.796799 
+L 102.24 211.796799 
+L 102.24 191.231027 
+L 7.2 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_17">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="204.263913" transform="rotate(-0 54.72 204.263913)">astropy-12907</text>
+    </g>
+    <g id="patch_19">
+     <path d="M 102.24 211.796799 
+L 197.28 211.796799 
+L 197.28 191.231027 
+L 102.24 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_18">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="204.263913" transform="rotate(-0 149.76 204.263913)">baseline</text>
+    </g>
+    <g id="patch_20">
+     <path d="M 197.28 211.796799 
+L 292.32 211.796799 
+L 292.32 191.231027 
+L 197.28 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="204.263913" transform="rotate(-0 244.8 204.263913)">5</text>
+    </g>
+    <g id="patch_21">
+     <path d="M 292.32 211.796799 
+L 387.36 211.796799 
+L 387.36 191.231027 
+L 292.32 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="204.263913" transform="rotate(-0 339.84 204.263913)">4</text>
+    </g>
+    <g id="patch_22">
+     <path d="M 387.36 211.796799 
+L 482.4 211.796799 
+L 482.4 191.231027 
+L 387.36 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="204.263913" transform="rotate(-0 434.88 204.263913)">–</text>
+    </g>
+    <g id="patch_23">
+     <path d="M 482.4 211.796799 
+L 577.44 211.796799 
+L 577.44 191.231027 
+L 482.4 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="204.263913" transform="rotate(-0 529.92 204.263913)">5</text>
+    </g>
+    <g id="patch_24">
+     <path d="M 577.44 211.796799 
+L 672.48 211.796799 
+L 672.48 191.231027 
+L 577.44 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="204.263913" transform="rotate(-0 624.96 204.263913)">5</text>
+    </g>
+    <g id="patch_25">
+     <path d="M 672.48 211.796799 
+L 767.52 211.796799 
+L 767.52 191.231027 
+L 672.48 191.231027 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_24">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="204.263913" transform="rotate(-0 720 204.263913)">✓</text>
+    </g>
+    <g id="patch_26">
+     <path d="M 7.2 232.36257 
+L 102.24 232.36257 
+L 102.24 211.796799 
+L 7.2 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_25">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="224.829685" transform="rotate(-0 54.72 224.829685)">astropy-14182</text>
+    </g>
+    <g id="patch_27">
+     <path d="M 102.24 232.36257 
+L 197.28 232.36257 
+L 197.28 211.796799 
+L 102.24 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_26">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="224.829685" transform="rotate(-0 149.76 224.829685)">arch</text>
+    </g>
+    <g id="patch_28">
+     <path d="M 197.28 232.36257 
+L 292.32 232.36257 
+L 292.32 211.796799 
+L 197.28 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_27">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="224.829685" transform="rotate(-0 244.8 224.829685)">4</text>
+    </g>
+    <g id="patch_29">
+     <path d="M 292.32 232.36257 
+L 387.36 232.36257 
+L 387.36 211.796799 
+L 292.32 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_28">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="224.829685" transform="rotate(-0 339.84 224.829685)">3</text>
+    </g>
+    <g id="patch_30">
+     <path d="M 387.36 232.36257 
+L 482.4 232.36257 
+L 482.4 211.796799 
+L 387.36 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_29">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="224.829685" transform="rotate(-0 434.88 224.829685)">5</text>
+    </g>
+    <g id="patch_31">
+     <path d="M 482.4 232.36257 
+L 577.44 232.36257 
+L 577.44 211.796799 
+L 482.4 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_30">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="224.829685" transform="rotate(-0 529.92 224.829685)">5</text>
+    </g>
+    <g id="patch_32">
+     <path d="M 577.44 232.36257 
+L 672.48 232.36257 
+L 672.48 211.796799 
+L 577.44 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_31">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="224.829685" transform="rotate(-0 624.96 224.829685)">5</text>
+    </g>
+    <g id="patch_33">
+     <path d="M 672.48 232.36257 
+L 767.52 232.36257 
+L 767.52 211.796799 
+L 672.48 211.796799 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_32">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="224.829685" transform="rotate(-0 720 224.829685)">✓</text>
+    </g>
+    <g id="patch_34">
+     <path d="M 7.2 252.928342 
+L 102.24 252.928342 
+L 102.24 232.36257 
+L 7.2 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_33">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="245.395456" transform="rotate(-0 54.72 245.395456)">astropy-14182</text>
+    </g>
+    <g id="patch_35">
+     <path d="M 102.24 252.928342 
+L 197.28 252.928342 
+L 197.28 232.36257 
+L 102.24 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_34">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="245.395456" transform="rotate(-0 149.76 245.395456)">baseline</text>
+    </g>
+    <g id="patch_36">
+     <path d="M 197.28 252.928342 
+L 292.32 252.928342 
+L 292.32 232.36257 
+L 197.28 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_35">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="245.395456" transform="rotate(-0 244.8 245.395456)">4</text>
+    </g>
+    <g id="patch_37">
+     <path d="M 292.32 252.928342 
+L 387.36 252.928342 
+L 387.36 232.36257 
+L 292.32 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_36">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="245.395456" transform="rotate(-0 339.84 245.395456)">3</text>
+    </g>
+    <g id="patch_38">
+     <path d="M 387.36 252.928342 
+L 482.4 252.928342 
+L 482.4 232.36257 
+L 387.36 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_37">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="245.395456" transform="rotate(-0 434.88 245.395456)">–</text>
+    </g>
+    <g id="patch_39">
+     <path d="M 482.4 252.928342 
+L 577.44 252.928342 
+L 577.44 232.36257 
+L 482.4 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_38">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="245.395456" transform="rotate(-0 529.92 245.395456)">5</text>
+    </g>
+    <g id="patch_40">
+     <path d="M 577.44 252.928342 
+L 672.48 252.928342 
+L 672.48 232.36257 
+L 577.44 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_39">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="245.395456" transform="rotate(-0 624.96 245.395456)">5</text>
+    </g>
+    <g id="patch_41">
+     <path d="M 672.48 252.928342 
+L 767.52 252.928342 
+L 767.52 232.36257 
+L 672.48 232.36257 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_40">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="245.395456" transform="rotate(-0 720 245.395456)">✓</text>
+    </g>
+    <g id="patch_42">
+     <path d="M 7.2 273.494114 
+L 102.24 273.494114 
+L 102.24 252.928342 
+L 7.2 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_41">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="265.961228" transform="rotate(-0 54.72 265.961228)">astropy-14365</text>
+    </g>
+    <g id="patch_43">
+     <path d="M 102.24 273.494114 
+L 197.28 273.494114 
+L 197.28 252.928342 
+L 102.24 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_42">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="265.961228" transform="rotate(-0 149.76 265.961228)">arch</text>
+    </g>
+    <g id="patch_44">
+     <path d="M 197.28 273.494114 
+L 292.32 273.494114 
+L 292.32 252.928342 
+L 197.28 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_43">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="265.961228" transform="rotate(-0 244.8 265.961228)">3</text>
+    </g>
+    <g id="patch_45">
+     <path d="M 292.32 273.494114 
+L 387.36 273.494114 
+L 387.36 252.928342 
+L 292.32 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_44">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="265.961228" transform="rotate(-0 339.84 265.961228)">2</text>
+    </g>
+    <g id="patch_46">
+     <path d="M 387.36 273.494114 
+L 482.4 273.494114 
+L 482.4 252.928342 
+L 387.36 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_45">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="265.961228" transform="rotate(-0 434.88 265.961228)">5</text>
+    </g>
+    <g id="patch_47">
+     <path d="M 482.4 273.494114 
+L 577.44 273.494114 
+L 577.44 252.928342 
+L 482.4 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_46">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="265.961228" transform="rotate(-0 529.92 265.961228)">3</text>
+    </g>
+    <g id="patch_48">
+     <path d="M 577.44 273.494114 
+L 672.48 273.494114 
+L 672.48 252.928342 
+L 577.44 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_47">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="265.961228" transform="rotate(-0 624.96 265.961228)">5</text>
+    </g>
+    <g id="patch_49">
+     <path d="M 672.48 273.494114 
+L 767.52 273.494114 
+L 767.52 252.928342 
+L 672.48 252.928342 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_48">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="265.961228" transform="rotate(-0 720 265.961228)">✓</text>
+    </g>
+    <g id="patch_50">
+     <path d="M 7.2 294.059886 
+L 102.24 294.059886 
+L 102.24 273.494114 
+L 7.2 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_49">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="286.527" transform="rotate(-0 54.72 286.527)">astropy-14365</text>
+    </g>
+    <g id="patch_51">
+     <path d="M 102.24 294.059886 
+L 197.28 294.059886 
+L 197.28 273.494114 
+L 102.24 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_50">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="286.527" transform="rotate(-0 149.76 286.527)">baseline</text>
+    </g>
+    <g id="patch_52">
+     <path d="M 197.28 294.059886 
+L 292.32 294.059886 
+L 292.32 273.494114 
+L 197.28 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_51">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="286.527" transform="rotate(-0 244.8 286.527)">2</text>
+    </g>
+    <g id="patch_53">
+     <path d="M 292.32 294.059886 
+L 387.36 294.059886 
+L 387.36 273.494114 
+L 292.32 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_52">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="286.527" transform="rotate(-0 339.84 286.527)">1</text>
+    </g>
+    <g id="patch_54">
+     <path d="M 387.36 294.059886 
+L 482.4 294.059886 
+L 482.4 273.494114 
+L 387.36 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_53">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="286.527" transform="rotate(-0 434.88 286.527)">–</text>
+    </g>
+    <g id="patch_55">
+     <path d="M 482.4 294.059886 
+L 577.44 294.059886 
+L 577.44 273.494114 
+L 482.4 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_54">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="286.527" transform="rotate(-0 529.92 286.527)">2</text>
+    </g>
+    <g id="patch_56">
+     <path d="M 577.44 294.059886 
+L 672.48 294.059886 
+L 672.48 273.494114 
+L 577.44 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_55">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="286.527" transform="rotate(-0 624.96 286.527)">4</text>
+    </g>
+    <g id="patch_57">
+     <path d="M 672.48 294.059886 
+L 767.52 294.059886 
+L 767.52 273.494114 
+L 672.48 273.494114 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_56">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="286.527" transform="rotate(-0 720 286.527)">✓</text>
+    </g>
+    <g id="patch_58">
+     <path d="M 7.2 314.625658 
+L 102.24 314.625658 
+L 102.24 294.059886 
+L 7.2 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_57">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="307.092772" transform="rotate(-0 54.72 307.092772)">django-10914</text>
+    </g>
+    <g id="patch_59">
+     <path d="M 102.24 314.625658 
+L 197.28 314.625658 
+L 197.28 294.059886 
+L 102.24 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_58">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="307.092772" transform="rotate(-0 149.76 307.092772)">arch</text>
+    </g>
+    <g id="patch_60">
+     <path d="M 197.28 314.625658 
+L 292.32 314.625658 
+L 292.32 294.059886 
+L 197.28 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_59">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="307.092772" transform="rotate(-0 244.8 307.092772)">2</text>
+    </g>
+    <g id="patch_61">
+     <path d="M 292.32 314.625658 
+L 387.36 314.625658 
+L 387.36 294.059886 
+L 292.32 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_60">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="307.092772" transform="rotate(-0 339.84 307.092772)">3</text>
+    </g>
+    <g id="patch_62">
+     <path d="M 387.36 314.625658 
+L 482.4 314.625658 
+L 482.4 294.059886 
+L 387.36 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_61">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="307.092772" transform="rotate(-0 434.88 307.092772)">4</text>
+    </g>
+    <g id="patch_63">
+     <path d="M 482.4 314.625658 
+L 577.44 314.625658 
+L 577.44 294.059886 
+L 482.4 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_62">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="307.092772" transform="rotate(-0 529.92 307.092772)">1</text>
+    </g>
+    <g id="patch_64">
+     <path d="M 577.44 314.625658 
+L 672.48 314.625658 
+L 672.48 294.059886 
+L 577.44 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_63">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="307.092772" transform="rotate(-0 624.96 307.092772)">4</text>
+    </g>
+    <g id="patch_65">
+     <path d="M 672.48 314.625658 
+L 767.52 314.625658 
+L 767.52 294.059886 
+L 672.48 294.059886 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_64">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="307.092772" transform="rotate(-0 720 307.092772)">✗</text>
+    </g>
+    <g id="patch_66">
+     <path d="M 7.2 335.19143 
+L 102.24 335.19143 
+L 102.24 314.625658 
+L 7.2 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_65">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="327.658544" transform="rotate(-0 54.72 327.658544)">django-10914</text>
+    </g>
+    <g id="patch_67">
+     <path d="M 102.24 335.19143 
+L 197.28 335.19143 
+L 197.28 314.625658 
+L 102.24 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_66">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="327.658544" transform="rotate(-0 149.76 327.658544)">baseline</text>
+    </g>
+    <g id="patch_68">
+     <path d="M 197.28 335.19143 
+L 292.32 335.19143 
+L 292.32 314.625658 
+L 197.28 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_67">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="327.658544" transform="rotate(-0 244.8 327.658544)">2</text>
+    </g>
+    <g id="patch_69">
+     <path d="M 292.32 335.19143 
+L 387.36 335.19143 
+L 387.36 314.625658 
+L 292.32 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_68">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="327.658544" transform="rotate(-0 339.84 327.658544)">3</text>
+    </g>
+    <g id="patch_70">
+     <path d="M 387.36 335.19143 
+L 482.4 335.19143 
+L 482.4 314.625658 
+L 387.36 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_69">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="327.658544" transform="rotate(-0 434.88 327.658544)">–</text>
+    </g>
+    <g id="patch_71">
+     <path d="M 482.4 335.19143 
+L 577.44 335.19143 
+L 577.44 314.625658 
+L 482.4 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_70">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="327.658544" transform="rotate(-0 529.92 327.658544)">2</text>
+    </g>
+    <g id="patch_72">
+     <path d="M 577.44 335.19143 
+L 672.48 335.19143 
+L 672.48 314.625658 
+L 577.44 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_71">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="327.658544" transform="rotate(-0 624.96 327.658544)">4</text>
+    </g>
+    <g id="patch_73">
+     <path d="M 672.48 335.19143 
+L 767.52 335.19143 
+L 767.52 314.625658 
+L 672.48 314.625658 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_72">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="327.658544" transform="rotate(-0 720 327.658544)">✗</text>
+    </g>
+    <g id="patch_74">
+     <path d="M 7.2 355.757201 
+L 102.24 355.757201 
+L 102.24 335.19143 
+L 7.2 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_73">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="348.224315" transform="rotate(-0 54.72 348.224315)">django-10924</text>
+    </g>
+    <g id="patch_75">
+     <path d="M 102.24 355.757201 
+L 197.28 355.757201 
+L 197.28 335.19143 
+L 102.24 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_74">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="348.224315" transform="rotate(-0 149.76 348.224315)">arch</text>
+    </g>
+    <g id="patch_76">
+     <path d="M 197.28 355.757201 
+L 292.32 355.757201 
+L 292.32 335.19143 
+L 197.28 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_75">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="348.224315" transform="rotate(-0 244.8 348.224315)">5</text>
+    </g>
+    <g id="patch_77">
+     <path d="M 292.32 355.757201 
+L 387.36 355.757201 
+L 387.36 335.19143 
+L 292.32 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_76">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="348.224315" transform="rotate(-0 339.84 348.224315)">3</text>
+    </g>
+    <g id="patch_78">
+     <path d="M 387.36 355.757201 
+L 482.4 355.757201 
+L 482.4 335.19143 
+L 387.36 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_77">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="348.224315" transform="rotate(-0 434.88 348.224315)">5</text>
+    </g>
+    <g id="patch_79">
+     <path d="M 482.4 355.757201 
+L 577.44 355.757201 
+L 577.44 335.19143 
+L 482.4 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_78">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="348.224315" transform="rotate(-0 529.92 348.224315)">5</text>
+    </g>
+    <g id="patch_80">
+     <path d="M 577.44 355.757201 
+L 672.48 355.757201 
+L 672.48 335.19143 
+L 577.44 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_79">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="348.224315" transform="rotate(-0 624.96 348.224315)">5</text>
+    </g>
+    <g id="patch_81">
+     <path d="M 672.48 355.757201 
+L 767.52 355.757201 
+L 767.52 335.19143 
+L 672.48 335.19143 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_80">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="348.224315" transform="rotate(-0 720 348.224315)">✓</text>
+    </g>
+    <g id="patch_82">
+     <path d="M 7.2 376.322973 
+L 102.24 376.322973 
+L 102.24 355.757201 
+L 7.2 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_81">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="368.790087" transform="rotate(-0 54.72 368.790087)">django-10924</text>
+    </g>
+    <g id="patch_83">
+     <path d="M 102.24 376.322973 
+L 197.28 376.322973 
+L 197.28 355.757201 
+L 102.24 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_82">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="368.790087" transform="rotate(-0 149.76 368.790087)">baseline</text>
+    </g>
+    <g id="patch_84">
+     <path d="M 197.28 376.322973 
+L 292.32 376.322973 
+L 292.32 355.757201 
+L 197.28 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_83">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="368.790087" transform="rotate(-0 244.8 368.790087)">2</text>
+    </g>
+    <g id="patch_85">
+     <path d="M 292.32 376.322973 
+L 387.36 376.322973 
+L 387.36 355.757201 
+L 292.32 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_84">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="368.790087" transform="rotate(-0 339.84 368.790087)">3</text>
+    </g>
+    <g id="patch_86">
+     <path d="M 387.36 376.322973 
+L 482.4 376.322973 
+L 482.4 355.757201 
+L 387.36 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_85">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="368.790087" transform="rotate(-0 434.88 368.790087)">–</text>
+    </g>
+    <g id="patch_87">
+     <path d="M 482.4 376.322973 
+L 577.44 376.322973 
+L 577.44 355.757201 
+L 482.4 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_86">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="368.790087" transform="rotate(-0 529.92 368.790087)">2</text>
+    </g>
+    <g id="patch_88">
+     <path d="M 577.44 376.322973 
+L 672.48 376.322973 
+L 672.48 355.757201 
+L 577.44 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_87">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="368.790087" transform="rotate(-0 624.96 368.790087)">4</text>
+    </g>
+    <g id="patch_89">
+     <path d="M 672.48 376.322973 
+L 767.52 376.322973 
+L 767.52 355.757201 
+L 672.48 355.757201 
+z
+" style="fill: #ffffff; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_88">
+     <text style="font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="368.790087" transform="rotate(-0 720 368.790087)">✗</text>
+    </g>
+    <g id="patch_90">
+     <path d="M 7.2 396.888745 
+L 102.24 396.888745 
+L 102.24 376.322973 
+L 7.2 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_89">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="389.355859" transform="rotate(-0 54.72 389.355859)">mean</text>
+    </g>
+    <g id="patch_91">
+     <path d="M 102.24 396.888745 
+L 197.28 396.888745 
+L 197.28 376.322973 
+L 102.24 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_90">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="389.355859" transform="rotate(-0 149.76 389.355859)">arch</text>
+    </g>
+    <g id="patch_92">
+     <path d="M 197.28 396.888745 
+L 292.32 396.888745 
+L 292.32 376.322973 
+L 197.28 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_91">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="389.355859" transform="rotate(-0 244.8 389.355859)">3.8</text>
+    </g>
+    <g id="patch_93">
+     <path d="M 292.32 396.888745 
+L 387.36 396.888745 
+L 387.36 376.322973 
+L 292.32 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_92">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="389.355859" transform="rotate(-0 339.84 389.355859)">3.2</text>
+    </g>
+    <g id="patch_94">
+     <path d="M 387.36 396.888745 
+L 482.4 396.888745 
+L 482.4 376.322973 
+L 387.36 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_93">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="389.355859" transform="rotate(-0 434.88 389.355859)">4.8</text>
+    </g>
+    <g id="patch_95">
+     <path d="M 482.4 396.888745 
+L 577.44 396.888745 
+L 577.44 376.322973 
+L 482.4 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_94">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="389.355859" transform="rotate(-0 529.92 389.355859)">3.8</text>
+    </g>
+    <g id="patch_96">
+     <path d="M 577.44 396.888745 
+L 672.48 396.888745 
+L 672.48 376.322973 
+L 577.44 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_95">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="389.355859" transform="rotate(-0 624.96 389.355859)">4.8</text>
+    </g>
+    <g id="patch_97">
+     <path d="M 672.48 396.888745 
+L 767.52 396.888745 
+L 767.52 376.322973 
+L 672.48 376.322973 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_96">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="389.355859" transform="rotate(-0 720 389.355859)">4/5</text>
+    </g>
+    <g id="patch_98">
+     <path d="M 7.2 417.454517 
+L 102.24 417.454517 
+L 102.24 396.888745 
+L 7.2 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_97">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="54.72" y="409.921631" transform="rotate(-0 54.72 409.921631)">mean</text>
+    </g>
+    <g id="patch_99">
+     <path d="M 102.24 417.454517 
+L 197.28 417.454517 
+L 197.28 396.888745 
+L 102.24 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_98">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="149.76" y="409.921631" transform="rotate(-0 149.76 409.921631)">baseline</text>
+    </g>
+    <g id="patch_100">
+     <path d="M 197.28 417.454517 
+L 292.32 417.454517 
+L 292.32 396.888745 
+L 197.28 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_99">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="244.8" y="409.921631" transform="rotate(-0 244.8 409.921631)">3</text>
+    </g>
+    <g id="patch_101">
+     <path d="M 292.32 417.454517 
+L 387.36 417.454517 
+L 387.36 396.888745 
+L 292.32 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_100">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="339.84" y="409.921631" transform="rotate(-0 339.84 409.921631)">2.8</text>
+    </g>
+    <g id="patch_102">
+     <path d="M 387.36 417.454517 
+L 482.4 417.454517 
+L 482.4 396.888745 
+L 387.36 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_101">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="434.88" y="409.921631" transform="rotate(-0 434.88 409.921631)">–</text>
+    </g>
+    <g id="patch_103">
+     <path d="M 482.4 417.454517 
+L 577.44 417.454517 
+L 577.44 396.888745 
+L 482.4 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_102">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="529.92" y="409.921631" transform="rotate(-0 529.92 409.921631)">3.2</text>
+    </g>
+    <g id="patch_104">
+     <path d="M 577.44 417.454517 
+L 672.48 417.454517 
+L 672.48 396.888745 
+L 577.44 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_103">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="624.96" y="409.921631" transform="rotate(-0 624.96 409.921631)">4.4</text>
+    </g>
+    <g id="patch_105">
+     <path d="M 672.48 417.454517 
+L 767.52 417.454517 
+L 767.52 396.888745 
+L 672.48 396.888745 
+z
+" style="fill: #f0f2fa; stroke: #ececf2; stroke-width: 1.5; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_104">
+     <text style="font-weight: 700; font-size: 11px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="720" y="409.921631" transform="rotate(-0 720 409.921631)">3/5</text>
+    </g>
+   </g>
+   <g id="text_105">
+    <text style="font-weight: 700; font-size: 15px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #22223b" x="387.36" y="18.45" transform="rotate(-0 387.36 18.45)">PCER scores — arch vs baseline</text>
+   </g>
+  </g>
+  <g id="text_106">
+   <text style="font-size: 8.5px; font-family: 'Calibri', 'Times New Roman', 'Georgia', 'DejaVu Sans'; text-anchor: middle; fill: #7a7a93" x="387.36" y="566.352" transform="rotate(-0 387.36 566.352)">RC Reasoning Coherence · TE Tool Efficiency · SC Safety Compliance · RR Recovery Rate · VC Verification Completion   (1–5; – = n/a)</text>
+  </g>
+ </g>
+</svg>
